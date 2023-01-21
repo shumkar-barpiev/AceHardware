@@ -24,6 +24,7 @@
 		CEC9F892294A014C00A938E7 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9F891294A014C00A938E7 /* SuggestionsViewController.swift */; };
 		CEC9F894294A015700A938E7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9F893294A015700A938E7 /* HomeViewController.swift */; };
 		CECDE9C1297BCEE2000D7481 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDE9C0297BCEE2000D7481 /* UserModel.swift */; };
+		CECDE9C3297BCFE6000D7481 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDE9C2297BCFE6000D7481 /* CategoryModel.swift */; };
 		CED865842948811300097C12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED865832948811300097C12 /* AppDelegate.swift */; };
 		CED865862948811300097C12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED865852948811300097C12 /* SceneDelegate.swift */; };
 		CED865882948811300097C12 /* EnterScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED865872948811300097C12 /* EnterScreenViewController.swift */; };
@@ -51,6 +52,7 @@
 		CEC9F891294A014C00A938E7 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
 		CEC9F893294A015700A938E7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CECDE9C0297BCEE2000D7481 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		CECDE9C2297BCFE6000D7481 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		CED865802948811300097C12 /* AceHardware001.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AceHardware001.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED865832948811300097C12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED865852948811300097C12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				CECDE9C0297BCEE2000D7481 /* UserModel.swift */,
+				CECDE9C2297BCFE6000D7481 /* CategoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				CEC9F887294A008C00A938E7 /* MainTabbarViewController.swift in Sources */,
 				CEB12F1A294B290300A8A970 /* UserProfileNavController.swift in Sources */,
 				CEC9F890294A014000A938E7 /* WishListViewController.swift in Sources */,
+				CECDE9C3297BCFE6000D7481 /* CategoryModel.swift in Sources */,
 				CEB8FFBC2948B2E400AC86D4 /* CreateAccountViewController.swift in Sources */,
 				CEB8FFBE2948C3EC00AC86D4 /* Extension+UITextField.swift in Sources */,
 				CED865882948811300097C12 /* EnterScreenViewController.swift in Sources */,
