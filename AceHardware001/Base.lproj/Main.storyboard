@@ -121,7 +121,11 @@
                                 <color key="barTintColor" systemColor="systemBackgroundColor"/>
                                 <items>
                                     <navigationItem id="Y6U-A7-7gr">
-                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="q0a-MB-qxd"/>
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="q0a-MB-qxd">
+                                            <connections>
+                                                <action selector="goBackButtonAction:" destination="dMF-3Y-9Up" id="GWP-M2-zk2"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -167,6 +171,9 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="signInButtonAction:" destination="dMF-3Y-9Up" eventType="touchUpInside" id="FIA-YU-xg3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jdW-xR-Zu1"/>
@@ -424,7 +431,11 @@
                                 <color key="barTintColor" systemColor="systemBackgroundColor"/>
                                 <items>
                                     <navigationItem id="lkc-eV-3zr">
-                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="Cf2-8i-a0p"/>
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="Cf2-8i-a0p">
+                                            <connections>
+                                                <action selector="goBackButtonAction:" destination="P2H-mk-89z" id="p5c-no-3in"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -496,6 +507,9 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="createAccountButtonAction:" destination="P2H-mk-89z" eventType="touchUpInside" id="jmU-ct-jKT"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="tfe-Ia-ydf">
                                 <rect key="frame" x="104" y="734" width="150" height="14"/>
@@ -511,6 +525,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Sign in">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="12"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="signInButtonAction:" destination="P2H-mk-89z" eventType="touchUpInside" id="odm-vf-sSc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="duM-PX-Gqa"/>

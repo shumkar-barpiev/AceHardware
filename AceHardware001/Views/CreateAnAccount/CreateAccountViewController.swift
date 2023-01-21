@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CryptoKit
 
 class CreateAccountViewController: UIViewController {
 
@@ -50,4 +51,48 @@ class CreateAccountViewController: UIViewController {
         self.createButton.layer.cornerRadius = 25
     }
 
+    
+    @IBAction func goBackButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! UIViewController
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: false, completion: nil)
+    }
+    
+    @IBAction func createAccountButtonAction(_ sender: Any) {
+        if !(usernameTextField.text?.isEmpty ?? true)! && !(emailTextField.text?.isEmpty ?? true)! && !(passwordTextField.text?.isEmpty ?? true)! && !(phoneNumberTextField.text?.isEmpty ?? true)!{
+            if passwordTextField.text!.count >= 8{
+                let emailString = emailTextField.text!
+                let range = NSRange(location: 0, length: emailString.utf16.count)
+                let regex = try! NSRegularExpression(pattern: "[a-z0-9]@[a-z].[a-z]")
+                
+                if regex.firstMatch(in: emailString, options: [], range: range) != nil {
+                    
+                    print("Baarysy tuura")
+                    
+                }else{
+                    let alerController = UIAlertController(title: "Invalid email address!!!", message: "Please, enter your email address correctly.", preferredStyle: .alert)
+                    let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
+                    alerController.addAction(alerAction)
+                    present(alerController, animated: true, completion: nil)
+                }
+            }else{
+                let alerController = UIAlertController(title: "Simple password!!!", message: "Your password must be at least 8 characters.", preferredStyle: .alert)
+                let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
+                alerController.addAction(alerAction)
+                present(alerController, animated: true, completion: nil)
+            }
+        }else{
+            let alerController = UIAlertController(title: "Complete all fields!!!", message: "", preferredStyle: .alert)
+            let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
+            alerController.addAction(alerAction)
+            present(alerController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func signInButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! UIViewController
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: false, completion: nil)
+    }
+    
 }

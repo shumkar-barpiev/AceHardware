@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CryptoKit
 
 class SignInViewController: UIViewController {
     
@@ -35,4 +36,12 @@ class SignInViewController: UIViewController {
         self.signInButton.layer.cornerRadius = 25
     }
 
+    @IBAction func goBackButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! UIViewController
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: false, completion: nil)
+    }
+    
+    @IBAction func signInButtonAction(_ sender: Any) {
+    }
 }
