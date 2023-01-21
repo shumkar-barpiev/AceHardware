@@ -71,10 +71,11 @@ class CreateAccountViewController: UIViewController {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd.MM.yyyy"
                     let today = dateFormatter.string(from: date)
+                    let password = passwordTextField.text!
                     
                     let didSave = createUser(usernameTextField.text!,
                                              emailTextField.text!,
-                                             passwordTextField.text!,
+                                             "\(SHA512.hash(data: Data(password.utf8)))",
                                              today,
                                              phoneNumberTextField.text!)
                     
