@@ -29,11 +29,16 @@ class EnterScreenViewController: UIViewController {
     
     
     @IBAction func createButtonAction(_ sender: Any) {
-        
+        let controller = storyboard?.instantiateViewController(withIdentifier: "CreateAccountViewController") as! UIViewController
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: false, completion: nil)
     }
     
     
     @IBAction func signInButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! UIViewController
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: false, completion: nil)
     }
     
 }
