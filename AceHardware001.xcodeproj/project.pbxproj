@@ -23,6 +23,7 @@
 		CEC9F890294A014000A938E7 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9F88F294A014000A938E7 /* WishListViewController.swift */; };
 		CEC9F892294A014C00A938E7 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9F891294A014C00A938E7 /* SuggestionsViewController.swift */; };
 		CEC9F894294A015700A938E7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9F893294A015700A938E7 /* HomeViewController.swift */; };
+		CECDE9C1297BCEE2000D7481 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDE9C0297BCEE2000D7481 /* UserModel.swift */; };
 		CED865842948811300097C12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED865832948811300097C12 /* AppDelegate.swift */; };
 		CED865862948811300097C12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED865852948811300097C12 /* SceneDelegate.swift */; };
 		CED865882948811300097C12 /* EnterScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED865872948811300097C12 /* EnterScreenViewController.swift */; };
@@ -49,6 +50,7 @@
 		CEC9F88F294A014000A938E7 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		CEC9F891294A014C00A938E7 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
 		CEC9F893294A015700A938E7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CECDE9C0297BCEE2000D7481 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CED865802948811300097C12 /* AceHardware001.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AceHardware001.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED865832948811300097C12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED865852948811300097C12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,14 @@
 			path = MainTabbarViewController;
 			sourceTree = "<group>";
 		};
+		CECDE9BF297BCEC5000D7481 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CECDE9C0297BCEE2000D7481 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CED865772948811300097C12 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +251,7 @@
 		CED865822948811300097C12 /* AceHardware001 */ = {
 			isa = PBXGroup;
 			children = (
+				CECDE9BF297BCEC5000D7481 /* Models */,
 				CE10D0A6294895B000EC03EB /* Extensions */,
 				CE10D0A92948978800EC03EB /* Views */,
 				CED865832948811300097C12 /* AppDelegate.swift */,
@@ -326,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC9F8842949E45B00A938E7 /* SignInViewController.swift in Sources */,
+				CECDE9C1297BCEE2000D7481 /* UserModel.swift in Sources */,
 				CEB12F20294B342700A8A970 /* CartNavController.swift in Sources */,
 				CEB12F24294B548100A8A970 /* SwitchViewController.swift in Sources */,
 				CEC9F887294A008C00A938E7 /* MainTabbarViewController.swift in Sources */,
