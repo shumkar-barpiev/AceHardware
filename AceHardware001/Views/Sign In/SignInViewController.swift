@@ -43,5 +43,13 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInButtonAction(_ sender: Any) {
+        if !(emailTextField.text?.isEmpty ?? true)! && !(passwordTextField.text?.isEmpty ?? true)! {
+            
+        }else{
+            let alerController = UIAlertController(title: "Complete all fields!!!", message: "", preferredStyle: .alert)
+            let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
+            alerController.addAction(alerAction)
+            present(alerController, animated: true, completion: nil)
+        }
     }
 }
