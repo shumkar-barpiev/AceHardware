@@ -34,4 +34,18 @@ class UserProfileViewController: UIViewController {
         self.parentView.bringSubviewToFront(profileImageView)
         
     }
+    
+    @IBAction func tapLogout(_ sender: Any) {
+        print("logout button")
+    }
+    
+    @IBAction func tapCart(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "CartNavController") as! CartNavController
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
+    }
+    
+    
+    
+    
 }
