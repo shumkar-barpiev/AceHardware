@@ -300,9 +300,15 @@
                     <navigationItem key="navigationItem" id="LjO-J1-Cne">
                         <barButtonItem key="leftBarButtonItem" image="rectangle.portrait.and.arrow.right" catalog="system" id="MW9-Dg-cF3">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="tapLogout:" destination="ned-f7-sVq" id="3hv-q4-atb"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="cart" catalog="system" id="7Lq-ld-C6x">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="tapCart:" destination="ned-f7-sVq" id="f6v-YM-tCn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
