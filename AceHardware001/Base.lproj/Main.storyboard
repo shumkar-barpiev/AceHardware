@@ -258,8 +258,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="eN0-Ur-bxD">
-                        <barButtonItem key="leftBarButtonItem" image="house" catalog="system" id="NE7-sc-Vaf">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" image="house.fill" catalog="system" id="iKf-BT-7bb">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -639,9 +639,9 @@
         <!--Cart Nav Controller-->
         <scene sceneID="diA-Ds-cHr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pbh-4C-rlj" customClass="CartNavController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CartNavController" automaticallyAdjustsScrollViewInsets="NO" id="pbh-4C-rlj" customClass="CartNavController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SUB-n7-jqq">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="SUB-n7-jqq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -665,6 +665,7 @@
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="106"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="logo2" width="259" height="159"/>
         <image name="myprofile" width="720" height="720"/>
         <image name="person" catalog="system" width="128" height="117"/>

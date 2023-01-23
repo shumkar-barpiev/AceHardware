@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func tapCart(_ sender: Any) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "CartViewController") as! CartViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "CartNavController") as! CartNavController
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false, completion: nil)
     }
