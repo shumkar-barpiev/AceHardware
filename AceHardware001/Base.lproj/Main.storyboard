@@ -209,9 +209,15 @@
                     <navigationItem key="navigationItem" id="dNu-Mz-eUi">
                         <barButtonItem key="leftBarButtonItem" image="rectangle.portrait.and.arrow.right" catalog="system" id="cbk-v8-QnE">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="tapLogout:" destination="Ux2-9D-vTf" id="KBG-BU-LyO"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="cart" catalog="system" id="9in-mj-Oec">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="tapCart:" destination="Ux2-9D-vTf" id="4Pb-gz-QxJ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
