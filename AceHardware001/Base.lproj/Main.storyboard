@@ -222,7 +222,7 @@
         <!--Cart View Controller-->
         <scene sceneID="ahe-vi-NGc">
             <objects>
-                <viewController id="LuY-ox-rwJ" customClass="CartViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartViewController" id="LuY-ox-rwJ" customClass="CartViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7MP-om-iq5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -378,9 +378,15 @@
                     <navigationItem key="navigationItem" id="NfK-Lb-bmS">
                         <barButtonItem key="leftBarButtonItem" image="rectangle.portrait.and.arrow.right" catalog="system" id="a1T-2F-6Xu">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="tapLogout:" destination="iAB-sf-KQR" id="n4R-aV-8BT"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="cart" catalog="system" id="JfB-Pm-qBo">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="tapCart:" destination="iAB-sf-KQR" id="Ogx-Hu-KRy"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

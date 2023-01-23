@@ -27,4 +27,16 @@ class HomeViewController: UIViewController {
         navigationItem.titleView = imageView
     }
 
+    
+    @IBAction func tapLogout(_ sender: Any) {
+        print("logout button")
+    }
+    
+    
+    @IBAction func tapCart(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "CartViewController") as! CartViewController
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
+    }
+    
 }
