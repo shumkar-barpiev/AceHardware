@@ -33,4 +33,13 @@ class CartViewController: UIViewController {
                 
         self.checkoutButton.layer.cornerRadius = 15
     }
+    
+    
+    @IBAction func goHome(_ sender: Any) {
+       
+        let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
+    }
+    
 }

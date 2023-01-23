@@ -260,6 +260,9 @@
                     <navigationItem key="navigationItem" id="eN0-Ur-bxD">
                         <barButtonItem key="leftBarButtonItem" image="house.fill" catalog="system" id="iKf-BT-7bb">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="goHome:" destination="LuY-ox-rwJ" id="3mR-zX-cPH"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -554,7 +557,7 @@
         <!--Home-->
         <scene sceneID="8nA-n0-rqX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mbi-JN-PRC" customClass="HomeNavigationViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="Mbi-JN-PRC" customClass="HomeNavigationViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="oAw-Z8-yaG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="19e-Xc-kgW">
