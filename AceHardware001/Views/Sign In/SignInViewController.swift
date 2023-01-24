@@ -9,7 +9,9 @@ import UIKit
 import CryptoKit
 
 class SignInViewController: UIViewController {
-    private var user = [User]()
+    private var users = [User]()
+    private var allEmails = [String]()
+    private var allPasswords = [String]()
     private var isExistUser = false
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,6 +23,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewStyle()
+        fetchAllUsers()
     }
     
     private func viewStyle(){
@@ -48,15 +51,32 @@ class SignInViewController: UIViewController {
         if !(emailTextField.text?.isEmpty ?? true)! && !(passwordTextField.text?.isEmpty ?? true)! {
             let tempPassword = passwordTextField.text!
             let hashPass = SHA512.hash(data: Data(tempPassword.utf8))
-            fetchUser(emailTextField.text!, "\(hashPass)")
+            getEmails()
+            getPasswords()
             
-            if self.user.count == 1{
+            if allEmails.contains(emailTextField.text!) && allPasswords.contains("\(hashPass)"){
                 let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
                 controller.modalPresentationStyle = .fullScreen
                 present(controller, animated: false, completion: nil)
             }else{
-                print("Kata")
+                let alertController = UIAlertController(title: "Warning", message: "There is not like this user or enter your email and password correctly!!!", preferredStyle: .alert)
+                let alertTryAction = UIAlertAction(title: "Try again", style: .default) { _ in
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                    controller.modalPresentationStyle = .fullScreen
+                    self.present(controller, animated: false, completion: nil)
+                }
+                let alertCreateAction = UIAlertAction(title: "Create Account", style: .default) { _ in
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "CreateAccountViewController") as! CreateAccountViewController
+                    controller.modalPresentationStyle = .fullScreen
+                    self.present(controller, animated: false, completion: nil)
+                }
+                
+                alertController.addAction(alertTryAction)
+                alertController.addAction(alertCreateAction)
+                
+                present(alertController, animated: true, completion: nil)
             }
+            
         }else{
             let alerController = UIAlertController(title: "Complete all fields!!!", message: "", preferredStyle: .alert)
             let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
@@ -65,50 +85,51 @@ class SignInViewController: UIViewController {
         }
     }
     
-    private func fetchUser(_ e: String, _ p: String){
-            getUser(e, p) { [self] result in
-                switch result{
-                case .success(let userObject):
-                    self.user = userObject
-                case .failure(let error):
-                    print(error)
-                    break
-                }
+    
+    private func fetchAllUsers(){
+        getAllUsers { [self] result in
+            switch result{
+            case .success(let userObjects):
+                self.users = userObjects
+            case .failure(let error):
+                print(error)
+                break
             }
         }
+    }
     
-        
-    public func getUser(_ email: String, _ password: String, completion: @escaping (Result<[User], Error>) -> Void){
-        guard let url = URL(string:"http://localhost/BackendAPIphp/api/getOneUserAPI.php" ) else{
+    private func getAllUsers(completion: @escaping (Result<[User], Error>) -> Void){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/userAPI.php" ) else{
             return
         }
-        
-        var request = URLRequest(url: url)
-        
-        // method body, headers
-        request.httpMethod = "POST"
-        
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body: [String: AnyHashable] = [
-            "email": email,
-            "password": password
-        ]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-        
-        
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error{
                 completion(.failure(error))
             }else if let data = data{
                 do{
                     let result = try JSONDecoder().decode([User].self, from: data)
-                    self.user = result
+                    self.users = result
                     completion(.success(result))
                 }catch{
                     completion(.failure(error))
                 }
+                
             }
         }
         task.resume()
     }
+    
+    private func getEmails(){
+        for user in users {
+            allEmails.append(user.email)
+        }
+        
+    }
+    
+    private func getPasswords(){
+        for user in users {
+            allPasswords.append(user.password)
+        }
+    }
+    
 }
