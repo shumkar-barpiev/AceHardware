@@ -8,7 +8,7 @@
 import UIKit
 
 class SwitchViewController: UIViewController {
-    var didLogout = false
+    var didLogout = true
     override func viewDidLoad() {
         super.viewDidLoad()
     }
