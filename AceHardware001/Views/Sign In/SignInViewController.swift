@@ -55,9 +55,17 @@ class SignInViewController: UIViewController {
             getPasswords()
             
             if allEmails.contains(emailTextField.text!) && allPasswords.contains("\(hashPass)"){
-                let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
-                controller.modalPresentationStyle = .fullScreen
-                present(controller, animated: false, completion: nil)
+                for user in users {
+                    if user.email == emailTextField.text! && user.password == "\(hashPass)"{
+                        if (user.isAdmin != 0) {
+                            print("This user is admin")
+                        }else{
+                            let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
+                            controller.modalPresentationStyle = .fullScreen
+                            present(controller, animated: false, completion: nil)
+                        }
+                    }
+                }
             }else{
                 let alertController = UIAlertController(title: "Warning", message: "There is not like this user or enter your email and password correctly!!!", preferredStyle: .alert)
                 let alertTryAction = UIAlertAction(title: "Try again", style: .default) { _ in
