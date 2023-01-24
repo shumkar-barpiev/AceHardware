@@ -676,6 +676,44 @@
             </objects>
             <point key="canvasLocation" x="6358" y="-606"/>
         </scene>
+        <!--Admin Panel-->
+        <scene sceneID="P3L-wR-V6t">
+            <objects>
+                <viewController storyboardIdentifier="AdminPanelViewController" id="Ppe-wd-Ic2" customClass="AdminPanelViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TPS-bZ-ZjG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="M8I-yt-KqV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Admin Panel" id="2Y4-Ym-9VD">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="rectangle.portrait.and.arrow.right" catalog="system" id="b4b-qE-sFN">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OEW-sy-hBx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4186.9565217391309" y="1887.7232142857142"/>
+        </scene>
+        <!--Admin Nav Bar Controller-->
+        <scene sceneID="qt7-sr-1e5">
+            <objects>
+                <navigationController storyboardIdentifier="AdminNavBarController" automaticallyAdjustsScrollViewInsets="NO" id="WvD-oh-xCq" customClass="AdminNavBarController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rpb-C8-doP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ppe-wd-Ic2" kind="relationship" relationship="rootViewController" id="DP5-aZ-C9x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVT-XT-5oy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3276.811594202899" y="1887.7232142857142"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Vector1" width="93" height="185"/>

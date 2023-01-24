@@ -58,7 +58,9 @@ class SignInViewController: UIViewController {
                 for user in users {
                     if user.email == emailTextField.text! && user.password == "\(hashPass)"{
                         if (user.isAdmin != 0) {
-                            print("This user is admin")
+                            let controller = storyboard?.instantiateViewController(withIdentifier: "AdminNavBarController") as! AdminNavBarController
+                            controller.modalPresentationStyle = .fullScreen
+                            present(controller, animated: false, completion: nil)
                         }else{
                             let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
                             controller.modalPresentationStyle = .fullScreen
