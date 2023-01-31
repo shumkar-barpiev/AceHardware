@@ -13,6 +13,7 @@
 		CE62F5AF297FEE6C00246AB2 /* AdminNavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62F5AE297FEE6C00246AB2 /* AdminNavBarController.swift */; };
 		CE6D5F562989657F001B9CD3 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D5F542989657F001B9CD3 /* CategoryCollectionViewCell.swift */; };
 		CE6D5F572989657F001B9CD3 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D5F552989657F001B9CD3 /* CategoryCollectionViewCell.xib */; };
+		CE6EB23529897EBB0082F200 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6EB23429897EBB0082F200 /* CardView.swift */; };
 		CE9CA23E294ADB0B00129BBE /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CA23D294ADB0B00129BBE /* HomeNavigationViewController.swift */; };
 		CEB12F1A294B290300A8A970 /* UserProfileNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F19294B290300A8A970 /* UserProfileNavController.swift */; };
 		CEB12F1D294B318C00A8A970 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F1C294B318C00A8A970 /* CartViewController.swift */; };
@@ -45,6 +46,7 @@
 		CE62F5AE297FEE6C00246AB2 /* AdminNavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavBarController.swift; sourceTree = "<group>"; };
 		CE6D5F542989657F001B9CD3 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE6D5F552989657F001B9CD3 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		CE6EB23429897EBB0082F200 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CE9CA23D294ADB0B00129BBE /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		CEB12F19294B290300A8A970 /* UserProfileNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileNavController.swift; sourceTree = "<group>"; };
 		CEB12F1C294B318C00A8A970 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		CE6D5F512989650D001B9CD3 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				CE6EB23329897EA40082F200 /* CardView */,
 				CE6D5F5229896517001B9CD3 /* CollectionViewCells */,
 			);
 			path = CustomViews;
@@ -170,6 +173,14 @@
 				CE6D5F552989657F001B9CD3 /* CategoryCollectionViewCell.xib */,
 			);
 			path = CategoryCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		CE6EB23329897EA40082F200 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				CE6EB23429897EBB0082F200 /* CardView.swift */,
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 		CE9CA23C294ADAE700129BBE /* NavigationController */ = {
@@ -394,6 +405,7 @@
 			files = (
 				CEC9F8842949E45B00A938E7 /* SignInViewController.swift in Sources */,
 				CE6D5F562989657F001B9CD3 /* CategoryCollectionViewCell.swift in Sources */,
+				CE6EB23529897EBB0082F200 /* CardView.swift in Sources */,
 				CECDE9C1297BCEE2000D7481 /* UserModel.swift in Sources */,
 				CEB12F20294B342700A8A970 /* CartNavController.swift in Sources */,
 				CEB12F24294B548100A8A970 /* SwitchViewController.swift in Sources */,
