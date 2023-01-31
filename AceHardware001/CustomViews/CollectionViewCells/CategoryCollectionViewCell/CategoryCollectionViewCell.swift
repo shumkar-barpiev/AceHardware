@@ -9,9 +9,15 @@ import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet weak var categoryLabel: UILabel!
+    
+    
+    func setUp(category: Category){
+        categoryLabel.text = category.categoryName
+        let image = UIImage(named: category.categoryImageName)
+        categoryImageView = UIImageView(image: image)
     }
+    
 
 }
