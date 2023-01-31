@@ -11,6 +11,8 @@
 		CE564BD0294AFB9C00B409B5 /* WishListNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE564BCF294AFB9C00B409B5 /* WishListNavController.swift */; };
 		CE62F5AB297FED9300246AB2 /* AdminPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62F5AA297FED9300246AB2 /* AdminPanelViewController.swift */; };
 		CE62F5AF297FEE6C00246AB2 /* AdminNavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62F5AE297FEE6C00246AB2 /* AdminNavBarController.swift */; };
+		CE6D5F562989657F001B9CD3 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D5F542989657F001B9CD3 /* CategoryCollectionViewCell.swift */; };
+		CE6D5F572989657F001B9CD3 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D5F552989657F001B9CD3 /* CategoryCollectionViewCell.xib */; };
 		CE9CA23E294ADB0B00129BBE /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CA23D294ADB0B00129BBE /* HomeNavigationViewController.swift */; };
 		CEB12F1A294B290300A8A970 /* UserProfileNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F19294B290300A8A970 /* UserProfileNavController.swift */; };
 		CEB12F1D294B318C00A8A970 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F1C294B318C00A8A970 /* CartViewController.swift */; };
@@ -41,6 +43,8 @@
 		CE564BCF294AFB9C00B409B5 /* WishListNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListNavController.swift; sourceTree = "<group>"; };
 		CE62F5AA297FED9300246AB2 /* AdminPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPanelViewController.swift; sourceTree = "<group>"; };
 		CE62F5AE297FEE6C00246AB2 /* AdminNavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavBarController.swift; sourceTree = "<group>"; };
+		CE6D5F542989657F001B9CD3 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE6D5F552989657F001B9CD3 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE9CA23D294ADB0B00129BBE /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		CEB12F19294B290300A8A970 /* UserProfileNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileNavController.swift; sourceTree = "<group>"; };
 		CEB12F1C294B318C00A8A970 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,31 @@
 				CE62F5AE297FEE6C00246AB2 /* AdminNavBarController.swift */,
 			);
 			path = AdminNavBar;
+			sourceTree = "<group>";
+		};
+		CE6D5F512989650D001B9CD3 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D5F5229896517001B9CD3 /* CollectionViewCells */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		CE6D5F5229896517001B9CD3 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D5F532989652A001B9CD3 /* CategoryCollectionViewCell */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		CE6D5F532989652A001B9CD3 /* CategoryCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE6D5F542989657F001B9CD3 /* CategoryCollectionViewCell.swift */,
+				CE6D5F552989657F001B9CD3 /* CategoryCollectionViewCell.xib */,
+			);
+			path = CategoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		CE9CA23C294ADAE700129BBE /* NavigationController */ = {
@@ -276,6 +305,7 @@
 		CED865822948811300097C12 /* AceHardware001 */ = {
 			isa = PBXGroup;
 			children = (
+				CE6D5F512989650D001B9CD3 /* CustomViews */,
 				CECDE9BF297BCEC5000D7481 /* Models */,
 				CE10D0A6294895B000EC03EB /* Extensions */,
 				CE10D0A92948978800EC03EB /* Views */,
@@ -348,6 +378,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6D5F572989657F001B9CD3 /* CategoryCollectionViewCell.xib in Resources */,
 				CED865932948811500097C12 /* LaunchScreen.storyboard in Resources */,
 				CED865902948811500097C12 /* Assets.xcassets in Resources */,
 				CED8658B2948811300097C12 /* Main.storyboard in Resources */,
@@ -362,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC9F8842949E45B00A938E7 /* SignInViewController.swift in Sources */,
+				CE6D5F562989657F001B9CD3 /* CategoryCollectionViewCell.swift in Sources */,
 				CECDE9C1297BCEE2000D7481 /* UserModel.swift in Sources */,
 				CEB12F20294B342700A8A970 /* CartNavController.swift in Sources */,
 				CEB12F24294B548100A8A970 /* SwitchViewController.swift in Sources */,
