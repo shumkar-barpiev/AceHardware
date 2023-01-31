@@ -12,6 +12,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     
+    static let identifier = String(describing: CategoryCollectionViewCell.self)
     
     func setUp(category: Category){
         categoryLabel.text = category.categoryName
