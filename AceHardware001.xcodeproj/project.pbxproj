@@ -19,7 +19,6 @@
 		CEB12F1D294B318C00A8A970 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F1C294B318C00A8A970 /* CartViewController.swift */; };
 		CEB12F20294B342700A8A970 /* CartNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F1F294B342700A8A970 /* CartNavController.swift */; };
 		CEB12F22294B381500A8A970 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F21294B381500A8A970 /* Extension+UIView.swift */; };
-		CEB12F24294B548100A8A970 /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F23294B548100A8A970 /* SwitchViewController.swift */; };
 		CEB8FFBC2948B2E400AC86D4 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8FFBB2948B2E400AC86D4 /* CreateAccountViewController.swift */; };
 		CEB8FFBE2948C3EC00AC86D4 /* Extension+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8FFBD2948C3EC00AC86D4 /* Extension+UITextField.swift */; };
 		CEC9F8842949E45B00A938E7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9F8832949E45B00A938E7 /* SignInViewController.swift */; };
@@ -52,7 +51,6 @@
 		CEB12F1C294B318C00A8A970 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		CEB12F1F294B342700A8A970 /* CartNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartNavController.swift; sourceTree = "<group>"; };
 		CEB12F21294B381500A8A970 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
-		CEB12F23294B548100A8A970 /* SwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewController.swift; sourceTree = "<group>"; };
 		CEB8FFBB2948B2E400AC86D4 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		CEB8FFBD2948C3EC00AC86D4 /* Extension+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextField.swift"; sourceTree = "<group>"; };
 		CEC9F8832949E45B00A938E7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				CED865872948811300097C12 /* EnterScreenViewController.swift */,
-				CEB12F23294B548100A8A970 /* SwitchViewController.swift */,
 			);
 			path = EnterScreen;
 			sourceTree = "<group>";
@@ -408,7 +405,6 @@
 				CE6EB23529897EBB0082F200 /* CardView.swift in Sources */,
 				CECDE9C1297BCEE2000D7481 /* UserModel.swift in Sources */,
 				CEB12F20294B342700A8A970 /* CartNavController.swift in Sources */,
-				CEB12F24294B548100A8A970 /* SwitchViewController.swift in Sources */,
 				CEC9F887294A008C00A938E7 /* MainTabbarViewController.swift in Sources */,
 				CE62F5AF297FEE6C00246AB2 /* AdminNavBarController.swift in Sources */,
 				CEB12F1A294B290300A8A970 /* UserProfileNavController.swift in Sources */,
