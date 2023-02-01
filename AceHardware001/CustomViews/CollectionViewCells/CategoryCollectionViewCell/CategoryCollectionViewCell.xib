@@ -4,42 +4,43 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCell" id="gTV-IL-0wX" customClass="CategoryCollectionViewCell" customModule="AceHardware001" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="113"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="101"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="200" height="113"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="101"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFg-HC-czV" customClass="CardView" customModule="AceHardware001" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="113"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="101"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yFe-YG-h6P">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="113"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yFe-YG-h6P">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="101"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzc-CK-BAg">
-                                <rect key="frame" x="10" y="44" width="180" height="25.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="vzc-CK-BAg">
+                                <rect key="frame" x="10" y="37.5" width="130" height="26.5"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vzc-CK-BAg" firstAttribute="centerY" secondItem="yFe-YG-h6P" secondAttribute="centerY" id="VWa-fy-cnz"/>
                             <constraint firstItem="yFe-YG-h6P" firstAttribute="leading" secondItem="sFg-HC-czV" secondAttribute="leading" id="Wan-wg-MNO"/>
+                            <constraint firstAttribute="height" constant="101" id="a9H-e0-Stu"/>
                             <constraint firstAttribute="bottom" secondItem="yFe-YG-h6P" secondAttribute="bottom" id="awH-ng-O9Y"/>
-                            <constraint firstAttribute="width" constant="200" id="f2P-Wh-6Gu"/>
                             <constraint firstItem="vzc-CK-BAg" firstAttribute="centerX" secondItem="yFe-YG-h6P" secondAttribute="centerX" id="g2O-4r-fOQ"/>
                             <constraint firstAttribute="trailing" secondItem="yFe-YG-h6P" secondAttribute="trailing" id="jjr-KA-A1L"/>
                             <constraint firstItem="yFe-YG-h6P" firstAttribute="top" secondItem="sFg-HC-czV" secondAttribute="top" id="oux-zl-eBi"/>
-                            <constraint firstAttribute="height" constant="113" id="u9d-Qn-PZa"/>
+                            <constraint firstAttribute="width" constant="150" id="raL-4B-Fdi"/>
                             <constraint firstItem="vzc-CK-BAg" firstAttribute="leading" secondItem="sFg-HC-czV" secondAttribute="leading" constant="10" id="wu9-WT-R7q"/>
                             <constraint firstAttribute="trailing" secondItem="vzc-CK-BAg" secondAttribute="trailing" constant="10" id="zD8-v6-HpU"/>
                         </constraints>
@@ -53,17 +54,12 @@
                 <constraint firstItem="sFg-HC-czV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rEc-aN-UsJ"/>
                 <constraint firstItem="sFg-HC-czV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rVP-kE-iR5"/>
             </constraints>
-            <size key="customSize" width="200" height="113"/>
+            <size key="customSize" width="150" height="101"/>
             <connections>
                 <outlet property="categoryImageView" destination="yFe-YG-h6P" id="hrz-Ai-DqL"/>
                 <outlet property="categoryLabel" destination="vzc-CK-BAg" id="nWg-R6-5nC"/>
             </connections>
-            <point key="canvasLocation" x="239.13043478260872" y="82.03125"/>
+            <point key="canvasLocation" x="202.89855072463769" y="77.34375"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

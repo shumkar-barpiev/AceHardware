@@ -15,9 +15,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     static let identifier = String(describing: CategoryCollectionViewCell.self)
     
     func setUp(category: Category){
+        categoryImageView.layer.cornerRadius = 25
         categoryLabel.text = category.categoryName
-        let image = UIImage(named: category.categoryImageName)
-        categoryImageView = UIImageView(image: image)
+        categoryImageView.image = UIImage(named: category.categoryImageName)
     }
     
 

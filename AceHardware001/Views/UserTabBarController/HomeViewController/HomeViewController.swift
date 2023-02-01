@@ -15,9 +15,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     let categories: [Category] = [
-        .init(id: 1, categoryName: "Mobile phones", categoryImageName: "mobilePhone"),
-        .init(id: 1, categoryName: "laptops", categoryImageName: "laptop"),
-        .init(id: 1, categoryName: "shoes", categoryImageName: "shoes"),
+        .init(id: 1, categoryName: "Home Living", categoryImageName: "imageHome"),
+        .init(id: 1, categoryName: "Auto", categoryImageName: "imageCar"),
+        .init(id: 1, categoryName: "Cleaning Supplies", categoryImageName: "imageCleaningSupplies"),
+        .init(id: 1, categoryName: "Tools", categoryImageName: "imageHomeTools"),
+        .init(id: 1, categoryName: "Kitchen", categoryImageName: "imageKitchen"),
+        .init(id: 1, categoryName: "Lamps", categoryImageName: "imageLamp"),
     ]
     
     override func viewDidLoad() {
