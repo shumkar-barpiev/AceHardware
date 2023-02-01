@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0B9102298A8672001139CB /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B9101298A8672001139CB /* ProductModel.swift */; };
 		CE564BCD294AF8E800B409B5 /* SuggestionsNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE564BCC294AF8E800B409B5 /* SuggestionsNavController.swift */; };
 		CE564BD0294AFB9C00B409B5 /* WishListNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE564BCF294AFB9C00B409B5 /* WishListNavController.swift */; };
 		CE62F5AB297FED9300246AB2 /* AdminPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62F5AA297FED9300246AB2 /* AdminPanelViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE0B9101298A8672001139CB /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		CE564BCC294AF8E800B409B5 /* SuggestionsNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsNavController.swift; sourceTree = "<group>"; };
 		CE564BCF294AFB9C00B409B5 /* WishListNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListNavController.swift; sourceTree = "<group>"; };
 		CE62F5AA297FED9300246AB2 /* AdminPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPanelViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			children = (
 				CECDE9C0297BCEE2000D7481 /* UserModel.swift */,
 				CECDE9C2297BCFE6000D7481 /* CategoryModel.swift */,
+				CE0B9101298A8672001139CB /* ProductModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				CE62F5AF297FEE6C00246AB2 /* AdminNavBarController.swift in Sources */,
 				CEB12F1A294B290300A8A970 /* UserProfileNavController.swift in Sources */,
 				CE62F5AB297FED9300246AB2 /* AdminPanelViewController.swift in Sources */,
+				CE0B9102298A8672001139CB /* ProductModel.swift in Sources */,
 				CEC9F890294A014000A938E7 /* WishListViewController.swift in Sources */,
 				CECDE9C3297BCFE6000D7481 /* CategoryModel.swift in Sources */,
 				CEB8FFBC2948B2E400AC86D4 /* CreateAccountViewController.swift in Sources */,
