@@ -36,7 +36,19 @@ class HomeViewController: UIViewController {
 
     
     @IBAction func tapLogout(_ sender: Any) {
-        print("logout button")
+        let alertController = UIAlertController(title: "Are you sure?", message: "Would you like to log out from this app.", preferredStyle: .alert)
+        let alertYesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! EnterScreenViewController
+            controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: true, completion: nil)
+        }
+        let alertNoAction = UIAlertAction(title: "No", style: .default) { _ in
+            
+        }
+        
+        alertController.addAction(alertYesAction)
+        alertController.addAction(alertNoAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     
