@@ -14,18 +14,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var cartButton: UIBarButtonItem!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
-    let categories: [Category] = [
-        .init(id: 1, categoryName: "Home Living", categoryImageName: "imageHome"),
-        .init(id: 1, categoryName: "Auto", categoryImageName: "imageCar"),
-        .init(id: 1, categoryName: "Cleaning Supplies", categoryImageName: "imageCleaningSupplies"),
-        .init(id: 1, categoryName: "Tools", categoryImageName: "imageHomeTools"),
-        .init(id: 1, categoryName: "Kitchen", categoryImageName: "imageKitchen"),
-        .init(id: 1, categoryName: "Lamps", categoryImageName: "imageLamp"),
-    ]
+    var categories: [Category] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+        fetchAllCategories()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,8 +60,41 @@ class HomeViewController: UIViewController {
         
     }
     
+    private func fetchAllCategories(){
+        getAllCategories{ [self] result in
+            switch result{
+            case .success(let categoryObjects):
+                self.categories = categoryObjects
+                DispatchQueue.main.async {
+                    categoryCollectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+    }
     
-    
+    public func getAllCategories(completion: @escaping (Result<[Category], Error>) -> Void){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/categoryAPI.php" ) else{
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Category].self, from: data)
+                    self.categories = result
+                    print(result)
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+            }
+        }
+        task.resume()
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
