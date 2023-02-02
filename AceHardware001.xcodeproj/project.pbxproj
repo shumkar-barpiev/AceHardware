@@ -17,6 +17,7 @@
 		CE6EB23529897EBB0082F200 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6EB23429897EBB0082F200 /* CardView.swift */; };
 		CE89CC0E298B9A1500ADFDEA /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89CC0C298B9A1500ADFDEA /* ProductCollectionViewCell.swift */; };
 		CE89CC0F298B9A1500ADFDEA /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE89CC0D298B9A1500ADFDEA /* ProductCollectionViewCell.xib */; };
+		CE89CC11298BA50800ADFDEA /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89CC10298BA50800ADFDEA /* ProductCardView.swift */; };
 		CE9CA23E294ADB0B00129BBE /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CA23D294ADB0B00129BBE /* HomeNavigationViewController.swift */; };
 		CEB12F1A294B290300A8A970 /* UserProfileNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F19294B290300A8A970 /* UserProfileNavController.swift */; };
 		CEB12F1D294B318C00A8A970 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB12F1C294B318C00A8A970 /* CartViewController.swift */; };
@@ -52,6 +53,7 @@
 		CE6EB23429897EBB0082F200 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CE89CC0C298B9A1500ADFDEA /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE89CC0D298B9A1500ADFDEA /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
+		CE89CC10298BA50800ADFDEA /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		CE9CA23D294ADB0B00129BBE /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		CEB12F19294B290300A8A970 /* UserProfileNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileNavController.swift; sourceTree = "<group>"; };
 		CEB12F1C294B318C00A8A970 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6EB23429897EBB0082F200 /* CardView.swift */,
+				CE89CC10298BA50800ADFDEA /* ProductCardView.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				CEB12F1D294B318C00A8A970 /* CartViewController.swift in Sources */,
 				CED8658E2948811300097C12 /* AceHardware001.xcdatamodeld in Sources */,
 				CEC9F892294A014C00A938E7 /* SuggestionsViewController.swift in Sources */,
+				CE89CC11298BA50800ADFDEA /* ProductCardView.swift in Sources */,
 				CEC9F894294A015700A938E7 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
