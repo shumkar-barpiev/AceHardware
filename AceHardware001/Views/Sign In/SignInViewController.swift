@@ -42,7 +42,7 @@ class SignInViewController: UIViewController {
     }
 
     @IBAction func goBackButtonAction(_ sender: Any) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! UIViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! EnterScreenViewController
         controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: false, completion: nil)
     }
@@ -64,6 +64,7 @@ class SignInViewController: UIViewController {
                         }else{
                             let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
                             controller.modalPresentationStyle = .fullScreen
+                            controller.user.append(user)
                             present(controller, animated: false, completion: nil)
                         }
                     }

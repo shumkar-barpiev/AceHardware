@@ -8,10 +8,9 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    var user = [User]()
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
-    
     @IBOutlet weak var productCollectionView: UICollectionView!
     
     @IBOutlet weak var cartButton: UIBarButtonItem!
@@ -38,6 +37,7 @@ class HomeViewController: UIViewController {
         registerCells()
         print(products)
         fetchAllCategories()
+        print(user)
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -8,14 +8,21 @@
 import UIKit
 
 class UserProfileViewController: UIViewController {
-    
+    var user = [User]()
     @IBOutlet weak var parentView: UIView!
-    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileView: UIView!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var lastActiveDateLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewStyle()
+        print("User Prof\(user)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +65,12 @@ class UserProfileViewController: UIViewController {
     }
     
     
+    @IBAction func editAccountButtonAction(_ sender: Any) {
+        
+        print("Edit account")
+        
+        print(user)
+    }
     
     
 }

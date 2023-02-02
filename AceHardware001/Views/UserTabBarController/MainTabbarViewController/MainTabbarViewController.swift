@@ -8,16 +8,23 @@
 import UIKit
 
 class MainTabbarViewController: UITabBarController {
-
+    var user = [User]()
+    @IBOutlet weak var mainTabBar: UITabBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.changeTabbarCorner()
+        print("\n\n\n\nHere started")
+        
+        let navVC  = self.viewControllers![3] as! UserProfileNavController
+        let userProfileViewController = navVC.topViewController as! UserProfileViewController
+        userProfileViewController.user = self.user
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.changingHeightTabbar()
+        
     }
     
     func changeTabbarCorner(){

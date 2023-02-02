@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCollectionViewCell" id="gTV-IL-0wX" customClass="ProductCollectionViewCell" customModule="AceHardware001" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="180" height="170"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="180" height="170"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,8 +48,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="180" id="TH3-BQ-Ovg"/>
-                            <constraint firstAttribute="height" constant="170" id="VEC-oe-hBO"/>
+                            <constraint firstAttribute="width" constant="180" id="TnS-fG-1Ax"/>
+                            <constraint firstAttribute="height" constant="170" id="haO-2i-RPc"/>
                         </constraints>
                     </view>
                 </subviews>
