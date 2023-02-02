@@ -431,7 +431,7 @@
                                                         <rect key="frame" x="0.0" y="42" width="414" height="442"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <subviews>
-                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LkB-OG-32H">
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LkB-OG-32H">
                                                                 <rect key="frame" x="0.0" y="8" width="414" height="426"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -442,6 +442,10 @@
                                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 </collectionViewFlowLayout>
                                                                 <cells/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="iAB-sf-KQR" id="5I4-lX-ODA"/>
+                                                                    <outlet property="delegate" destination="iAB-sf-KQR" id="sC9-jf-Zg7"/>
+                                                                </connections>
                                                             </collectionView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -479,6 +483,7 @@
                         <outlet property="cartButton" destination="JfB-Pm-qBo" id="kT1-vm-o1j"/>
                         <outlet property="categoryCollectionView" destination="04z-tw-LpP" id="8pc-gl-StC"/>
                         <outlet property="logoutButton" destination="a1T-2F-6Xu" id="NP6-uA-IrG"/>
+                        <outlet property="productCollectionView" destination="LkB-OG-32H" id="KPF-sX-FfY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pEl-uH-2J4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

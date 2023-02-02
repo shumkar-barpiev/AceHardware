@@ -40,6 +40,10 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="180" id="TH3-BQ-Ovg"/>
+                            <constraint firstAttribute="height" constant="170" id="VEC-oe-hBO"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>

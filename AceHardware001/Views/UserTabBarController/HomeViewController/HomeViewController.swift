@@ -11,14 +11,23 @@ class HomeViewController: UIViewController {
 
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
+    
+    @IBOutlet weak var productCollectionView: UICollectionView!
+    
     @IBOutlet weak var cartButton: UIBarButtonItem!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     var categories: [Category] = []
+    var products: [Product] = [
+        .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
+        .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
+        .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+        print(products)
         fetchAllCategories()
     }
     
@@ -58,6 +67,8 @@ class HomeViewController: UIViewController {
     private func registerCells(){
         categoryCollectionView.register(UINib(nibName: CategoryCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         
+        productCollectionView.register(UINib(nibName: ProductCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        
     }
     
     private func fetchAllCategories(){
@@ -86,7 +97,6 @@ class HomeViewController: UIViewController {
                 do{
                     let result = try JSONDecoder().decode([Category].self, from: data)
                     self.categories = result
-                    print(result)
                     completion(.success(result))
                 }catch{
                     completion(.failure(error))
@@ -99,15 +109,32 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        switch collectionView{
+            case categoryCollectionView:
+                return categories.count
+            case productCollectionView:
+                return products.count
+            default:
+                return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-        cell.setUp(category: categories[indexPath.row])
-        return cell
+                
+        switch collectionView{
+            case categoryCollectionView:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+                cell.setUp(category: categories[indexPath.row])
+                return cell
+            case productCollectionView:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
+                cell.setUp(product: products[indexPath.row])
+                
+                return cell
+            default:
+                return UICollectionViewCell()
+        }
     }
     
     
