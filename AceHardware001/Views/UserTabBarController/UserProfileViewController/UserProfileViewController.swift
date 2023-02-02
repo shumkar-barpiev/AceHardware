@@ -22,7 +22,10 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewStyle()
-        print("User Prof\(user)")
+        usernameLabel.text = user[0].userName
+        emailLabel.text = user[0].email
+        phoneNumberLabel.text = user[0].phoneNumber
+        lastActiveDateLabel.text = user[0].lastActiveDate
     }
     
     override func viewDidAppear(_ animated: Bool) {
