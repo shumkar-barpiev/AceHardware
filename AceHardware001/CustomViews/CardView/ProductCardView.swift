@@ -23,7 +23,7 @@ class ProductCardView: UIView{
     private func initialSetup(){
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
-        layer.cornerRadius = 5
-        layer.shadowOpacity = 0.3
+        layer.cornerRadius = 8
+        layer.shadowOpacity = 0.5
     }
 }

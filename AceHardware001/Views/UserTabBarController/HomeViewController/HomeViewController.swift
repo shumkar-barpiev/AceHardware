@@ -21,6 +21,15 @@ class HomeViewController: UIViewController {
     var products: [Product] = [
         .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
         .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
+        .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops"),
+        .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
+        .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
+        .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops"),
+        .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
+        .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
+        .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops"),
+        .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
+        .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
         .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops")
     ]
     
