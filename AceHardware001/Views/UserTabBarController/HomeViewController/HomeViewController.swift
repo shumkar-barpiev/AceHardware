@@ -17,27 +17,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     var categories: [Category] = []
-    var products: [Product] = [
-        .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
-        .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
-        .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops"),
-        .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
-        .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
-        .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops"),
-        .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
-        .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
-        .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops"),
-        .init(id: 1, productName: "Iphone 14", description: "Veri cool Iphone model", price: 1200.0, productImageName: "imageMobilePhones"),
-        .init(id: 2, productName: "Sofa", description: "Veri cool Iphone model", price: 170.0, productImageName: "imageHome"),
-        .init(id: 3, productName: "Macbook pro 14 M1", description: "Veri cool Iphone model", price: 2300.0, productImageName: "imageLaptops")
-    ]
+    var popularProducts: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
-        print(products)
         fetchAllCategories()
-        print(user)
+        fetchPopularProducts()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,6 +100,43 @@ class HomeViewController: UIViewController {
         }
         task.resume()
     }
+    
+    
+    private func fetchPopularProducts(){
+        getPopularProducts{ [self] result in
+            switch result{
+            case .success(let productObjects):
+                self.popularProducts = productObjects
+                DispatchQueue.main.async {
+                    productCollectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+    }
+    
+    public func getPopularProducts(completion: @escaping (Result<[Product], Error>) -> Void){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/popularProductsAPI.php" ) else{
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Product].self, from: data)
+                    self.popularProducts = result
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+            }
+        }
+        task.resume()
+    }
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -123,7 +146,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case categoryCollectionView:
                 return categories.count
             case productCollectionView:
-                return products.count
+                return popularProducts.count
             default:
                 return 0
         }
@@ -138,7 +161,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return cell
             case productCollectionView:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
-                cell.setUp(product: products[indexPath.row])
+                cell.setUp(product: popularProducts[indexPath.row])
                 
                 return cell
             default:
