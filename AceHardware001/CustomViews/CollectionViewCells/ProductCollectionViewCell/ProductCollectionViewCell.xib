@@ -11,35 +11,35 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCollectionViewCell" id="gTV-IL-0wX" customClass="ProductCollectionViewCell" customModule="AceHardware001" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="180" height="170"/>
+            <rect key="frame" x="0.0" y="0.0" width="180" height="230"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="180" height="170"/>
+                <rect key="frame" x="0.0" y="0.0" width="180" height="230"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22c-7c-6ng">
-                        <rect key="frame" x="0.0" y="0.0" width="180" height="170"/>
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="230"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yP0-J8-oMp" customClass="ProductCardView" customModule="AceHardware001" customModuleProvider="target">
-                                <rect key="frame" x="15" y="8" width="150" height="102"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="16" y="7" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HJy-mi-crW">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="102"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="hSP-u0-0ge">
-                                <rect key="frame" x="8" y="118" width="164" height="29"/>
+                                <rect key="frame" x="17" y="165" width="147" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="TtB-YC-GmN">
-                                <rect key="frame" x="15" y="150" width="150" height="15"/>
+                                <rect key="frame" x="31" y="202" width="119" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <color key="textColor" red="0.90588235289999997" green="0.12549019610000001" blue="0.12716579920000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -48,8 +48,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="180" id="TnS-fG-1Ax"/>
-                            <constraint firstAttribute="height" constant="170" id="haO-2i-RPc"/>
+                            <constraint firstAttribute="width" constant="180" id="Zck-PC-iAL"/>
+                            <constraint firstAttribute="height" constant="230" id="pFq-R5-rY9"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -61,13 +61,13 @@
                 <constraint firstItem="22c-7c-6ng" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="PGB-mE-sgw"/>
                 <constraint firstItem="22c-7c-6ng" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jXM-St-bAF"/>
             </constraints>
-            <size key="customSize" width="180" height="170"/>
+            <size key="customSize" width="180" height="230"/>
             <connections>
                 <outlet property="productImageView" destination="HJy-mi-crW" id="EO1-3K-Qp0"/>
                 <outlet property="productNameLabel" destination="hSP-u0-0ge" id="Meu-TR-xBe"/>
                 <outlet property="productPriceLabel" destination="TtB-YC-GmN" id="gGQ-cO-Lma"/>
             </connections>
-            <point key="canvasLocation" x="226.08695652173915" y="105.13392857142857"/>
+            <point key="canvasLocation" x="226.08695652173915" y="125.22321428571428"/>
         </collectionViewCell>
     </objects>
     <resources>
