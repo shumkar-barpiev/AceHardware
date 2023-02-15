@@ -63,6 +63,8 @@ class UserProfileViewController: UIViewController {
     
     @IBAction func tapCart(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "CartNavController") as! CartNavController
+        let cartViewController = controller.topViewController as! CartViewController
+        cartViewController.user = self.user
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false, completion: nil)
     }

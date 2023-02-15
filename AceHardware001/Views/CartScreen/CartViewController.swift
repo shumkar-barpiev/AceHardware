@@ -8,7 +8,7 @@
 import UIKit
 
 class CartViewController: UIViewController {
-
+    var user = [User]()
     
     @IBOutlet weak var bottomCartView: UIView!
     @IBOutlet weak var checkoutButton: UIButton!
@@ -17,6 +17,8 @@ class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewStyle()
+        
+        print(user)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,6 +40,7 @@ class CartViewController: UIViewController {
     @IBAction func goHome(_ sender: Any) {
        
         let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
+        controller.user = self.user
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false, completion: nil)
     }

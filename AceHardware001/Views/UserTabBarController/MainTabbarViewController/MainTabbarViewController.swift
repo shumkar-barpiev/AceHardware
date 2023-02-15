@@ -14,10 +14,23 @@ class MainTabbarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.changeTabbarCorner()
-        print("\n\n\n\nHere started")
         
-        let navVC  = self.viewControllers![3] as! UserProfileNavController
-        let userProfileViewController = navVC.topViewController as! UserProfileViewController
+        let navVC1  = self.viewControllers![0] as! HomeNavigationViewController
+        let homeViewController = navVC1.topViewController as! HomeViewController
+        homeViewController.user = self.user
+        
+        
+        let navVC2  = self.viewControllers![1] as! SuggestionsNavController
+        let suggestionViewController = navVC2.topViewController as! SuggestionsViewController
+        suggestionViewController.user = self.user
+        
+        
+        let navVC3  = self.viewControllers![2] as! WishListNavController
+        let wishlistViewController = navVC3.topViewController as! WishListViewController
+        wishlistViewController.user = self.user
+        
+        let navVC4  = self.viewControllers![3] as! UserProfileNavController
+        let userProfileViewController = navVC4.topViewController as! UserProfileViewController
         userProfileViewController.user = self.user
     }
     
