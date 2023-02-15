@@ -9,9 +9,17 @@ import UIKit
 
 class SuggestionsViewController: UIViewController {
 
+    
+    @IBOutlet weak var suggestionsView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewStyle()
+    }
+    
+    private func viewStyle(){
+        self.suggestionsView.roundCorners([.topLeft, .topRight], radius: 30)
     }
     
     override func viewDidAppear(_ animated: Bool) {
