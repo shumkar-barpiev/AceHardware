@@ -10,9 +10,15 @@ import UIKit
 class WishListViewController: UIViewController {
     
     
+    
+    @IBOutlet weak var wishListView: UIView!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewStyle()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -22,6 +28,11 @@ class WishListViewController: UIViewController {
         let image = UIImage(named: "logo1.png")
         imageView.image = image
         navigationItem.titleView = imageView
+    }
+    
+    
+    private func viewStyle(){
+        self.wishListView.roundCorners([.topLeft, .topRight], radius: 30)
     }
 
     
