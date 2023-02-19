@@ -14,17 +14,7 @@ class ListProductsViewController: UIViewController {
     
     var category = [Category]()
     var user = [User]()
-    
-    var products: [Product] = [
-        .init(id: 1, productName: "hello", description: "hello", price: 12.02, productImageName: "myprofile"),
-        .init(id: 1, productName: "hello", description: "hello", price: 12.02, productImageName: "myprofile"),
-        .init(id: 1, productName: "hello", description: "hello", price: 12.02, productImageName: "myprofile"),
-        .init(id: 1, productName: "hello", description: "hello", price: 12.02, productImageName: "myprofile"),
-        .init(id: 1, productName: "hello", description: "hello", price: 12.02, productImageName: "myprofile"),
-        .init(id: 1, productName: "hello", description: "hello", price: 12.02, productImageName: "myprofile"),
-        .init(id: 1, productName: "hello", description: "hello", price: 12.02, productImageName: "myprofile")
-        
-    ]
+    var products = [Product]()
     
     
     override func viewDidLoad() {
@@ -49,6 +39,62 @@ class ListProductsViewController: UIViewController {
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false, completion: nil)
     }
+    
+    
+    
+    
+//    MARK: getting products by category
+    
+    
+    private func fetchProductsByCategory(_ id: Int){
+        getProductsByCategory{ [self] result in
+            switch result{
+            case .success(let productObjects):
+                self.products = productObjects
+                DispatchQueue.main.async {
+                    productListTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+        
+    }
+    
+    public func getProductsByCategory(completion: @escaping (Result<[Product], Error>) -> Void){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/categoryAPI.php" ) else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [:
+//            "categoryID": categoryID
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Product].self, from: data)
+                    self.products = result
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+            }
+        }
+        task.resume()
+    }
+    
     
 }
 
