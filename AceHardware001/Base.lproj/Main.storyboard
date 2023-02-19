@@ -238,6 +238,48 @@
             </objects>
             <point key="canvasLocation" x="4805.7971014492759" y="-562.5"/>
         </scene>
+        <!--List Products View Controller-->
+        <scene sceneID="IOv-FT-mhj">
+            <objects>
+                <viewController storyboardIdentifier="ListProductsViewController" id="9eh-8k-62j" customClass="ListProductsViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jxn-at-JPW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="86Z-ZO-slo">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9eh-8k-62j" id="HZQ-Oz-7hd"/>
+                                    <outlet property="delegate" destination="9eh-8k-62j" id="Btx-rz-RtN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Umi-o8-FDW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="86Z-ZO-slo" firstAttribute="top" secondItem="Umi-o8-FDW" secondAttribute="top" id="3nQ-zU-OQP"/>
+                            <constraint firstItem="Umi-o8-FDW" firstAttribute="bottom" secondItem="86Z-ZO-slo" secondAttribute="bottom" id="5cB-CQ-rM0"/>
+                            <constraint firstItem="86Z-ZO-slo" firstAttribute="leading" secondItem="Umi-o8-FDW" secondAttribute="leading" id="8g5-tC-LbG"/>
+                            <constraint firstItem="Umi-o8-FDW" firstAttribute="trailing" secondItem="86Z-ZO-slo" secondAttribute="trailing" id="aFT-LZ-cCT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nmq-lR-6Ip">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="Rfg-jR-7ZT">
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="goBack:" destination="9eh-8k-62j" id="2gi-k1-Dgz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="productListTableView" destination="86Z-ZO-slo" id="edM-qY-qP2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6e-Bk-6Z0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7134.7826086956529" y="-563.16964285714278"/>
+        </scene>
         <!--Cart View Controller-->
         <scene sceneID="ahe-vi-NGc">
             <objects>
@@ -291,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFE-dS-cMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7268" y="-606"/>
+            <point key="canvasLocation" x="7135" y="-1341"/>
         </scene>
         <!--Wish List View Controller-->
         <scene sceneID="462-0M-nh5">
@@ -890,7 +932,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peK-xC-AXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6358" y="-606"/>
+            <point key="canvasLocation" x="6225" y="-1341"/>
         </scene>
         <!--Admin Panel-->
         <scene sceneID="P3L-wR-V6t">
@@ -930,6 +972,24 @@
             </objects>
             <point key="canvasLocation" x="3276.811594202899" y="1887.7232142857142"/>
         </scene>
+        <!--List Products Nav View Controller-->
+        <scene sceneID="ndS-4h-BK2">
+            <objects>
+                <navigationController storyboardIdentifier="ListProductsNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="vkB-h8-twG" customClass="ListProductsNavViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tDd-3j-KdH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9eh-8k-62j" kind="relationship" relationship="rootViewController" id="t9e-g9-hIN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gOd-da-osD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6224.6376811594209" y="-563.16964285714278"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Vector1" width="93" height="185"/>
@@ -949,6 +1009,9 @@
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

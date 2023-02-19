@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		408519CF29A250EC0012579B /* ProductListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408519CD29A250EC0012579B /* ProductListTableViewCell.swift */; };
+		408519D029A250EC0012579B /* ProductListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 408519CE29A250EC0012579B /* ProductListTableViewCell.xib */; };
+		408519D329A258CD0012579B /* ListProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408519D229A258CD0012579B /* ListProductsViewController.swift */; };
+		408519D629A2642E0012579B /* ListProductsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408519D529A2642E0012579B /* ListProductsNavViewController.swift */; };
 		CE0B9102298A8672001139CB /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B9101298A8672001139CB /* ProductModel.swift */; };
 		CE564BCD294AF8E800B409B5 /* SuggestionsNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE564BCC294AF8E800B409B5 /* SuggestionsNavController.swift */; };
 		CE564BD0294AFB9C00B409B5 /* WishListNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE564BCF294AFB9C00B409B5 /* WishListNavController.swift */; };
@@ -43,6 +47,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		408519CD29A250EC0012579B /* ProductListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewCell.swift; sourceTree = "<group>"; };
+		408519CE29A250EC0012579B /* ProductListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListTableViewCell.xib; sourceTree = "<group>"; };
+		408519D229A258CD0012579B /* ListProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsViewController.swift; sourceTree = "<group>"; };
+		408519D529A2642E0012579B /* ListProductsNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsNavViewController.swift; sourceTree = "<group>"; };
 		CE0B9101298A8672001139CB /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		CE564BCC294AF8E800B409B5 /* SuggestionsNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsNavController.swift; sourceTree = "<group>"; };
 		CE564BCF294AFB9C00B409B5 /* WishListNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListNavController.swift; sourceTree = "<group>"; };
@@ -91,6 +99,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		408519CB29A250590012579B /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				408519CC29A250830012579B /* CategoryProductListTableViewCell */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		408519CC29A250830012579B /* CategoryProductListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				408519CD29A250EC0012579B /* ProductListTableViewCell.swift */,
+				408519CE29A250EC0012579B /* ProductListTableViewCell.xib */,
+			);
+			path = CategoryProductListTableViewCell;
+			sourceTree = "<group>";
+		};
+		408519D129A258930012579B /* ListProducts */ = {
+			isa = PBXGroup;
+			children = (
+				408519D429A263FD0012579B /* ListProductsNavViewController */,
+				408519D229A258CD0012579B /* ListProductsViewController.swift */,
+			);
+			path = ListProducts;
+			sourceTree = "<group>";
+		};
+		408519D429A263FD0012579B /* ListProductsNavViewController */ = {
+			isa = PBXGroup;
+			children = (
+				408519D529A2642E0012579B /* ListProductsNavViewController.swift */,
+			);
+			path = ListProductsNavViewController;
+			sourceTree = "<group>";
+		};
 		CE10D0A6294895B000EC03EB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +145,7 @@
 		CE10D0A92948978800EC03EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				408519D129A258930012579B /* ListProducts */,
 				CEB12F1B294B316700A8A970 /* CartScreen */,
 				CEC9F885294A004100A938E7 /* UserTabBarController */,
 				CEC9F8822949E42500A938E7 /* Sign In */,
@@ -157,6 +200,7 @@
 		CE6D5F512989650D001B9CD3 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				408519CB29A250590012579B /* TableViewCell */,
 				CE6EB23329897EA40082F200 /* CardView */,
 				CE6D5F5229896517001B9CD3 /* CollectionViewCells */,
 			);
@@ -406,6 +450,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				408519D029A250EC0012579B /* ProductListTableViewCell.xib in Resources */,
 				CE6D5F572989657F001B9CD3 /* CategoryCollectionViewCell.xib in Resources */,
 				CED865932948811500097C12 /* LaunchScreen.storyboard in Resources */,
 				CE89CC0F298B9A1500ADFDEA /* ProductCollectionViewCell.xib in Resources */,
@@ -435,7 +480,9 @@
 				CECDE9C3297BCFE6000D7481 /* CategoryModel.swift in Sources */,
 				CEB8FFBC2948B2E400AC86D4 /* CreateAccountViewController.swift in Sources */,
 				CEB8FFBE2948C3EC00AC86D4 /* Extension+UITextField.swift in Sources */,
+				408519CF29A250EC0012579B /* ProductListTableViewCell.swift in Sources */,
 				CED865882948811300097C12 /* EnterScreenViewController.swift in Sources */,
+				408519D329A258CD0012579B /* ListProductsViewController.swift in Sources */,
 				CED865842948811300097C12 /* AppDelegate.swift in Sources */,
 				CE89CC0E298B9A1500ADFDEA /* ProductCollectionViewCell.swift in Sources */,
 				CE564BD0294AFB9C00B409B5 /* WishListNavController.swift in Sources */,
@@ -444,6 +491,7 @@
 				CE564BCD294AF8E800B409B5 /* SuggestionsNavController.swift in Sources */,
 				CE9CA23E294ADB0B00129BBE /* HomeNavigationViewController.swift in Sources */,
 				CEB12F22294B381500A8A970 /* Extension+UIView.swift in Sources */,
+				408519D629A2642E0012579B /* ListProductsNavViewController.swift in Sources */,
 				CEB12F1D294B318C00A8A970 /* CartViewController.swift in Sources */,
 				CED8658E2948811300097C12 /* AceHardware001.xcdatamodeld in Sources */,
 				CEC9F892294A014C00A938E7 /* SuggestionsViewController.swift in Sources */,

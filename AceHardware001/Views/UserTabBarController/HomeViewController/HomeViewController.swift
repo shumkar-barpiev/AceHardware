@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
         let alertYesAction = UIAlertAction(title: "Yes", style: .default) { _ in
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! EnterScreenViewController
             controller.modalPresentationStyle = .fullScreen
-            self.present(controller, animated: true, completion: nil)
+            self.present(controller, animated: false, completion: nil)
         }
         let alertNoAction = UIAlertAction(title: "No", style: .default) { _ in
             
@@ -171,5 +171,29 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == categoryCollectionView{
+//            print(categories[indexPath.row]," cliced!")
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "ListProductsNavViewController") as! ListProductsNavViewController
+            
+            let vc = controller.topViewController as! ListProductsViewController
+            vc.user = self.user
+            
+            var arrCategory = [Category]()
+            
+            arrCategory.append(categories[indexPath.row])
+            
+            vc.category = arrCategory
+            
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: false, completion: nil)
+            
+            
+        }else{
+            
+        }
+    }
     
 }
