@@ -191,7 +191,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             present(controller, animated: false, completion: nil)
             
             
-        }else{
+        }else if collectionView == productCollectionView{
+            
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsNavViewController") as! ProductDetailsNavViewController
+            
+            let vc = controller.topViewController as! ProductDetailsViewController
+            vc.user = self.user
+            
+            var arrProduct = [Product]()
+            arrProduct.append(popularProducts[indexPath.row])
+            
+            vc.product = arrProduct
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: false, completion: nil)
             
         }
     }
