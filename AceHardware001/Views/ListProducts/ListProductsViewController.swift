@@ -9,7 +9,6 @@ import UIKit
 
 class ListProductsViewController: UIViewController {
 
-    
     @IBOutlet weak var productListTableView: UITableView!
     
     var category = [Category]()
@@ -22,8 +21,7 @@ class ListProductsViewController: UIViewController {
         
         self.title = category[0].categoryName
         registerCells()
-        
-        
+        fetchProductsByCategory(category[0].id)
     }
     
     
@@ -47,7 +45,7 @@ class ListProductsViewController: UIViewController {
     
     
     private func fetchProductsByCategory(_ id: Int){
-        getProductsByCategory{ [self] result in
+        getProductsByCategory({ [self] result in
             switch result{
             case .success(let productObjects):
                 self.products = productObjects
@@ -58,12 +56,12 @@ class ListProductsViewController: UIViewController {
                 print(error)
                 break
             }
-        }
+        }, id)
         
     }
     
-    public func getProductsByCategory(completion: @escaping (Result<[Product], Error>) -> Void){
-        guard let url = URL(string:"http://localhost/BackendAPIphp/api/categoryAPI.php" ) else{
+    public func getProductsByCategory(_ completion: @escaping (Result<[Product], Error>) -> Void, _ categoryID: Int){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/getProductByCategoryAPI.php" ) else{
             return
         }
         
@@ -73,8 +71,8 @@ class ListProductsViewController: UIViewController {
         request.httpMethod = "POST"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body: [String: AnyHashable] = [:
-//            "categoryID": categoryID
+        let body: [String: AnyHashable] = [
+            "categoryID": categoryID
         ]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
