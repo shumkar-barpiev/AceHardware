@@ -13,12 +13,15 @@ class ProductListTableViewCell: UITableViewCell {
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productDetailLabel: UILabel!
+    
     
     
     func setUp(product: Product ){
         productImageView.layer.cornerRadius = 15
         productNameLabel.text = product.productName
-        productPriceLabel.text = "\(product.price) $"
+        productDetailLabel.text = product.description
+        productPriceLabel.text = "\(round(100 * product.price) / 100) som"
         productImageView.image = UIImage(named: product.productImageName)
     }
     
