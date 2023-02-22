@@ -198,6 +198,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let vc = controller.topViewController as! ProductDetailsViewController
             vc.user = self.user
             
+            var newArr = [Product]()
+            for product in popularProducts{
+                if product.id == popularProducts[indexPath.row].id{
+                    continue
+                }else{
+                    newArr.append(product)
+                }
+            }
+            vc.relatedProducts = newArr
+            
+            
             var arrProduct = [Product]()
             arrProduct.append(popularProducts[indexPath.row])
             

@@ -10,6 +10,9 @@ import UIKit
 class ProductDetailsViewController: UIViewController {
     var user = [User]()
     var product = [Product]()
+    var relatedProducts = [Product]()
+    
+    @IBOutlet weak var relatedProductsCollectionView: UICollectionView!
     
     
     
@@ -24,7 +27,7 @@ class ProductDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        registerCells()
         viewStyle()
     }
     
@@ -70,6 +73,28 @@ class ProductDetailsViewController: UIViewController {
         print("like button")
     }
     
+//    MARK: register cell
+    
+    private func registerCells(){
+        relatedProductsCollectionView.register(UINib(nibName: ProductCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        
+    }
     
 
+}
+
+
+extension ProductDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return relatedProducts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
+        cell.setUp(product: relatedProducts[indexPath.row])
+        
+        return cell
+    }
+    
+    
 }
