@@ -32,13 +32,13 @@ class SuggestionsViewController: UIViewController {
     }
     
     @IBAction func tapLogout(_ sender: Any) {
-        let alertController = UIAlertController(title: "Are you sure?", message: "Would you like to log out from this app.", preferredStyle: .alert)
-        let alertYesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+        let alertController = UIAlertController(title: "Чын элеби.", message: "Тиркемеден чыгууну каалайсызбы?", preferredStyle: .alert)
+        let alertYesAction = UIAlertAction(title: "Ооба", style: .default) { _ in
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! EnterScreenViewController
             controller.modalPresentationStyle = .fullScreen
             self.present(controller, animated: false, completion: nil)
         }
-        let alertNoAction = UIAlertAction(title: "No", style: .default) { _ in
+        let alertNoAction = UIAlertAction(title: "Жок", style: .default) { _ in
             
         }
         
