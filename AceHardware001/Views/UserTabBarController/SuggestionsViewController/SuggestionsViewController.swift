@@ -11,11 +11,16 @@ class SuggestionsViewController: UIViewController {
     var user = [User]()
     
     @IBOutlet weak var suggestionsView: UIView!
+    @IBOutlet weak var suggestionsCollectionView: UICollectionView!
     
+    
+    var suggestionCategories: [Category] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewStyle()
+        registerCells()
+        fetchAllCategories()
     }
     
     private func viewStyle(){
@@ -54,5 +59,66 @@ class SuggestionsViewController: UIViewController {
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false, completion: nil)
     }
+    
+    
+    
+    private func registerCells(){
+        suggestionsCollectionView.register(UINib(nibName: SuggestionsCollectionViewCell.identifier, bundle: nil ), forCellWithReuseIdentifier: SuggestionsCollectionViewCell.identifier )
+    }
+    
+    
+//    fetching categories from backend
+    
+    private func fetchAllCategories(){
+        getAllCategories{ [self] result in
+            switch result{
+            case .success(let categoryObjects):
+                self.suggestionCategories = categoryObjects
+                DispatchQueue.main.async {
+                    suggestionsCollectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+    }
+    
+    public func getAllCategories(completion: @escaping (Result<[Category], Error>) -> Void){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/categoryAPI.php" ) else{
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Category].self, from: data)
+                    self.suggestionCategories = result
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+            }
+        }
+        task.resume()
+    }
+    
+}
+
+
+extension SuggestionsViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return suggestionCategories.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = suggestionsCollectionView.dequeueReusableCell(withReuseIdentifier: SuggestionsCollectionViewCell.identifier, for: indexPath) as! SuggestionsCollectionViewCell
+        
+        cell.setUp(category: suggestionCategories[indexPath.row])
+        
+        return cell
+    }
+    
     
 }

@@ -11,4 +11,5 @@ struct Category: Codable{
     let id: Int
     let categoryName: String
     let categoryImageName: String
+    let categoryDescription: String
 }
