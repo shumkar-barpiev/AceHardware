@@ -70,13 +70,13 @@ class SignInViewController: UIViewController {
                     }
                 }
             }else{
-                let alertController = UIAlertController(title: "Warning", message: "There is not like this user or enter your email and password correctly!!!", preferredStyle: .alert)
-                let alertTryAction = UIAlertAction(title: "Try again", style: .default) { _ in
+                let alertController = UIAlertController(title: "Эскертүү!!!", message: "Мындай колдонуучу жок же электрондук адрес жана сырсөздү туура киргизиңиз.", preferredStyle: .alert)
+                let alertTryAction = UIAlertAction(title: "Кайра сынап көрүү", style: .default) { _ in
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
                     controller.modalPresentationStyle = .fullScreen
                     self.present(controller, animated: false, completion: nil)
                 }
-                let alertCreateAction = UIAlertAction(title: "Create Account", style: .default) { _ in
+                let alertCreateAction = UIAlertAction(title: "Аккаунт түзүү", style: .default) { _ in
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "CreateAccountViewController") as! CreateAccountViewController
                     controller.modalPresentationStyle = .fullScreen
                     self.present(controller, animated: false, completion: nil)
@@ -89,7 +89,7 @@ class SignInViewController: UIViewController {
             }
             
         }else{
-            let alerController = UIAlertController(title: "Complete all fields!!!", message: "", preferredStyle: .alert)
+            let alerController = UIAlertController(title: "Бардык талааларды толтуруңуз!!!", message: "", preferredStyle: .alert)
             let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
             alerController.addAction(alerAction)
             present(alerController, animated: true, completion: nil)
