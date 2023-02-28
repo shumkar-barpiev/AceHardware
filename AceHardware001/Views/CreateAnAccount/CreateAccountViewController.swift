@@ -80,8 +80,8 @@ class CreateAccountViewController: UIViewController {
                                              phoneNumberTextField.text!)
                     
                     if didSave{
-                        let alertController = UIAlertController(title: "Congratulations, \(usernameTextField.text!)!!!", message: "Your account created succesfully.", preferredStyle: .alert)
-                        let alertAction = UIAlertAction(title: "ok", style: .cancel) { _ in
+                        let alertController = UIAlertController(title: "Куттуктайбыз, \(usernameTextField.text!)!!!", message: "Сиздин аккаунт ийгиликтүү түзүлдү.", preferredStyle: .alert)
+                        let alertAction = UIAlertAction(title: "Макул", style: .cancel) { _ in
                             let controller = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! UIViewController
                             controller.modalPresentationStyle = .fullScreen
                             self.present(controller, animated: true, completion: nil)
@@ -89,8 +89,8 @@ class CreateAccountViewController: UIViewController {
                         alertController.addAction(alertAction)
                         present(alertController, animated: true, completion: nil)
                     }else{
-                        let alertController = UIAlertController(title: "Warning!!!", message: "Unfortunately, something wrong...", preferredStyle: .alert)
-                        let alertAction = UIAlertAction(title: "Try again", style: .cancel) { _ in
+                        let alertController = UIAlertController(title: "Эскертүү!!!", message: "Тилекке каршы, катачылык кетти...", preferredStyle: .alert)
+                        let alertAction = UIAlertAction(title: "Кайра сынап көрүү", style: .cancel) { _ in
                             let controller = self.storyboard?.instantiateViewController(withIdentifier: "CreateAccountViewController") as! UIViewController
                             controller.modalPresentationStyle = .fullScreen
                             self.present(controller, animated: true, completion: nil)
@@ -100,20 +100,20 @@ class CreateAccountViewController: UIViewController {
                         present(alertController, animated: true, completion: nil)
                     }
                 }else{
-                    let alerController = UIAlertController(title: "Invalid email address!!!", message: "Please, enter your email address correctly.", preferredStyle: .alert)
-                    let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
+                    let alerController = UIAlertController(title: "Туура эмес электрондук адрес!!!", message: "Сураныч, электрондук дарегиңизди туура киргизиңиз.", preferredStyle: .alert)
+                    let alerAction = UIAlertAction(title: "Макул", style: .cancel) { _ in }
                     alerController.addAction(alerAction)
                     present(alerController, animated: true, completion: nil)
                 }
             }else{
-                let alerController = UIAlertController(title: "Simple password!!!", message: "Your password must be at least 8 characters.", preferredStyle: .alert)
-                let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
+                let alerController = UIAlertController(title: "Жөнөкөй Сырсөз!!!", message: "Коопсуздугуңуз үчүн эң аз 8 символдон көбүрөөк сырсөз киргизиңиз.", preferredStyle: .alert)
+                let alerAction = UIAlertAction(title: "Макул", style: .cancel) { _ in }
                 alerController.addAction(alerAction)
                 present(alerController, animated: true, completion: nil)
             }
         }else{
-            let alerController = UIAlertController(title: "Complete all fields!!!", message: "", preferredStyle: .alert)
-            let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
+            let alerController = UIAlertController(title: "Бардык талааларды толтуруңуз!!!", message: "", preferredStyle: .alert)
+            let alerAction = UIAlertAction(title: "Макул", style: .cancel) { _ in }
             alerController.addAction(alerAction)
             present(alerController, animated: true, completion: nil)
         }

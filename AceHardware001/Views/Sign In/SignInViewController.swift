@@ -90,7 +90,7 @@ class SignInViewController: UIViewController {
             
         }else{
             let alerController = UIAlertController(title: "Бардык талааларды толтуруңуз!!!", message: "", preferredStyle: .alert)
-            let alerAction = UIAlertAction(title: "ok", style: .cancel) { _ in }
+            let alerAction = UIAlertAction(title: "Макул", style: .cancel) { _ in }
             alerController.addAction(alerAction)
             present(alerController, animated: true, completion: nil)
         }
