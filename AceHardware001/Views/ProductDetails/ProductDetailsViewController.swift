@@ -12,6 +12,11 @@ class ProductDetailsViewController: UIViewController {
     var product = [Product]()
     var relatedProducts = [Product]()
     
+   
+    @IBOutlet weak var commentBodyTextField: UITextField!
+    
+    
+    
     @IBOutlet weak var relatedProductsCollectionView: UICollectionView!
     
     
@@ -50,7 +55,7 @@ class ProductDetailsViewController: UIViewController {
         
     }
     
-    
+//    MARK: Button actions
     
     @IBAction func goBack(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
@@ -73,6 +78,95 @@ class ProductDetailsViewController: UIViewController {
         print("like button")
     }
     
+    
+    @IBAction func commentButtonAction(_ sender: Any) {
+        if !(commentBodyTextField.text?.isEmpty ?? true)!{
+            
+            let customerID = user[0].id
+            let productID = product[0].id
+            let commentBody = commentBodyTextField.text!
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            let today = dateFormatter.string(from: date)
+            
+            let result = leaveComment(customerID, productID, commentBody, today)
+            
+            if result{
+                let alertController = UIAlertController(title: "", message: "Комментарийиңиз ийгиликтүү сакталды.", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Макул", style: .default) { _ in
+                    let navController = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsNavViewController") as! ProductDetailsNavViewController
+                    
+                    let vc = navController.topViewController as! ProductDetailsViewController
+                    vc.user = self.user
+                    vc.relatedProducts = self.relatedProducts
+                    vc.product = self.product
+                    navController.modalPresentationStyle = .fullScreen
+                    self.present(navController, animated: false, completion: nil)
+                }
+                alertController.addAction(alertAction)
+                present(alertController, animated: true, completion: nil)
+                
+            }else{
+                let alertController = UIAlertController(title: "Эскертүү!!!", message: "Кандайдыр бир катачылык кетти.", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Макул", style: .default) { _ in
+                    
+                }
+                alertController.addAction(alertAction)
+                present(alertController, animated: true, completion: nil)
+            }
+    
+        }else{
+            let alertController = UIAlertController(title: "Эскертүү!!!", message: "Комментарий талаасына маани киргизиңиз.", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Макул", style: .default) { _ in
+                
+            }
+            
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+//    MARK: implementing leaving comment event
+    public func leaveComment(_ customerID: Int, _ productId: Int, _ commentBody: String, _ commentCreatedDate: String) -> Bool{
+        var returnVal = true
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/leaveComment.php" ) else{
+            return false
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "customerID": customerID,
+            "productID": productId,
+            "commentBody": commentBody,
+            "dateOfComment": commentCreatedDate
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else{
+                return
+            }
+            // Convert HTTP Response Data to a String
+            if let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }else{
+                returnVal = false
+            }
+        }
+        
+        task.resume()
+        
+        return returnVal
+    }
+    
+    
 //    MARK: register cell
     
     private func registerCells(){
@@ -80,7 +174,6 @@ class ProductDetailsViewController: UIViewController {
         
     }
     
-
 }
 
 

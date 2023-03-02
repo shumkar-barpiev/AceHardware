@@ -446,6 +446,9 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="commentButtonAction:" destination="BmR-II-wl0" eventType="touchUpInside" id="7pB-e4-I9C"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -498,6 +501,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="commentBodyTextField" destination="7Am-wM-Jld" id="sYI-Q2-F2T"/>
                         <outlet property="priceLabel" destination="ONb-Y8-VAa" id="nwR-PS-scw"/>
                         <outlet property="productDescriptionLabel" destination="OXj-ut-OkP" id="mtM-hZ-8lo"/>
                         <outlet property="productDetailView" destination="M0J-Z4-lb5" id="VoA-i2-ZRF"/>
