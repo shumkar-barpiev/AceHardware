@@ -73,7 +73,11 @@ class CreateAccountViewController: UIViewController {
                     let today = dateFormatter.string(from: date)
                     let password = passwordTextField.text!
                     
+                    var arr = usernameTextField.text!.components(separatedBy: " ")
+                    var userImageName = arr[0]
+                    
                     let didSave = createUser(usernameTextField.text!,
+                                             userImageName,
                                              emailTextField.text!,
                                              "\(SHA512.hash(data: Data(password.utf8)))",
                                              today,
@@ -127,7 +131,7 @@ class CreateAccountViewController: UIViewController {
     
  
 //    MARK: creating new user function
-    private func createUser(_ username: String, _ email: String,_ password: String, _ lastActiveDate: String, _ phoneNumber: String ) -> Bool{
+    private func createUser(_ username: String, _ userImageName: String, _ email: String,_ password: String, _ lastActiveDate: String, _ phoneNumber: String ) -> Bool{
         var createUserResponse = true
         
         guard let url = URL(string:"http://localhost/BackendAPIphp/api/userAPI.php" ) else{
@@ -142,6 +146,7 @@ class CreateAccountViewController: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let body: [String: AnyHashable] = [
             "userName": username,
+            "userImageName": userImageName,
             "email": email,
             "password": password,
             "isAdmin": 0,

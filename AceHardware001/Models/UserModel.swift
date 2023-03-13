@@ -15,4 +15,5 @@ struct User: Codable{
     let isAdmin: Int
     let lastActiveDate: String
     let phoneNumber: String
+    let userImageName: String
 }
