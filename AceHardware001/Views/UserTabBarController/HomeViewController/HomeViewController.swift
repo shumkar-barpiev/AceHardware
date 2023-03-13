@@ -180,6 +180,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             let vc = controller.topViewController as! ListProductsViewController
             vc.user = self.user
+            vc.popularProducts = self.popularProducts
             
             var arrCategory = [Category]()
             

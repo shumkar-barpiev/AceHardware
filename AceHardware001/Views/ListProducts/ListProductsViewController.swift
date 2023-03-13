@@ -14,6 +14,7 @@ class ListProductsViewController: UIViewController {
     var category = [Category]()
     var user = [User]()
     var products = [Product]()
+    var popularProducts = [Product]()
     
     
     override func viewDidLoad() {
@@ -110,5 +111,32 @@ extension ListProductsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         
+        
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsNavViewController") as! ProductDetailsNavViewController
+        
+        let vc = controller.topViewController as! ProductDetailsViewController
+        vc.user = self.user
+        
+        var newArr = [Product]()
+        for product in popularProducts{
+            if product.id == popularProducts[indexPath.row].id{
+                continue
+            }else{
+                newArr.append(product)
+            }
+        }
+        vc.relatedProducts = newArr
+        
+        
+        var arrProduct = [Product]()
+        arrProduct.append(popularProducts[indexPath.row])
+        
+        vc.product = arrProduct
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
     }
 }
