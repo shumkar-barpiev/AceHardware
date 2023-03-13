@@ -53,7 +53,7 @@ class CreateAccountViewController: UIViewController {
 
 //    MARK: goback button action
     @IBAction func goBackButtonAction(_ sender: Any) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! UIViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! EnterScreenViewController
         controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: false, completion: nil)
     }
@@ -73,8 +73,8 @@ class CreateAccountViewController: UIViewController {
                     let today = dateFormatter.string(from: date)
                     let password = passwordTextField.text!
                     
-                    var arr = usernameTextField.text!.components(separatedBy: " ")
-                    var userImageName = arr[0]
+                    let arr = usernameTextField.text!.components(separatedBy: " ")
+                    let userImageName = arr[0]
                     
                     let didSave = createUser(usernameTextField.text!,
                                              userImageName,
@@ -86,7 +86,7 @@ class CreateAccountViewController: UIViewController {
                     if didSave{
                         let alertController = UIAlertController(title: "Куттуктайбыз, \(usernameTextField.text!)!!!", message: "Сиздин аккаунт ийгиликтүү түзүлдү.", preferredStyle: .alert)
                         let alertAction = UIAlertAction(title: "Макул", style: .cancel) { _ in
-                            let controller = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! UIViewController
+                            let controller = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
                             controller.modalPresentationStyle = .fullScreen
                             self.present(controller, animated: true, completion: nil)
                         }
@@ -95,7 +95,7 @@ class CreateAccountViewController: UIViewController {
                     }else{
                         let alertController = UIAlertController(title: "Эскертүү!!!", message: "Тилекке каршы, катачылык кетти...", preferredStyle: .alert)
                         let alertAction = UIAlertAction(title: "Кайра сынап көрүү", style: .cancel) { _ in
-                            let controller = self.storyboard?.instantiateViewController(withIdentifier: "CreateAccountViewController") as! UIViewController
+                            let controller = self.storyboard?.instantiateViewController(withIdentifier: "CreateAccountViewController") as! CreateAccountViewController
                             controller.modalPresentationStyle = .fullScreen
                             self.present(controller, animated: true, completion: nil)
                         }
@@ -124,7 +124,7 @@ class CreateAccountViewController: UIViewController {
     }
 //    MARK: sign in button action
     @IBAction func signInButtonAction(_ sender: Any) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! UIViewController
+        let controller = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: false, completion: nil)
     }

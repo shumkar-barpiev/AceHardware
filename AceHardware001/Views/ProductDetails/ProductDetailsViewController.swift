@@ -11,10 +11,7 @@ class ProductDetailsViewController: UIViewController {
     var user = [User]()
     var product = [Product]()
     var relatedProducts = [Product]()
-    var comments:[Comment] = [
-        .init(userName: "shumkar", userImageName: "myprofile", commentBody: "very perfect products ", date: "12.09.20"),
-        .init(userName: "Tori ", userImageName: "toriImage", commentBody: "I don't like this", date: "12.03.23")
-    ]
+    var comments = [Comment]()
     
     
     
@@ -40,6 +37,7 @@ class ProductDetailsViewController: UIViewController {
         super.viewDidLoad()
         registerCells()
         viewStyle()
+        fetchProductComments(product[0].id)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -180,6 +178,57 @@ class ProductDetailsViewController: UIViewController {
         
         commentCollectionView.register(UINib(nibName: CommentCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CommentCollectionViewCell.identifier)
         
+    }
+    
+    
+    
+    private func fetchProductComments(_ productID: Int){
+        getProductComments({ [self] result in
+            switch result{
+            case .success(let commentObjects):
+                self.comments = commentObjects
+                DispatchQueue.main.async {
+                    commentCollectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }, productID)
+        
+    }
+    
+    public func getProductComments(_ completion: @escaping (Result<[Comment], Error>) -> Void, _ productID: Int){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/getProductCommentsCustomer.php" ) else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "productId": productID
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Comment].self, from: data)
+                    self.comments = result
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+            }
+        }
+        task.resume()
     }
     
 }

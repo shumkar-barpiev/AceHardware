@@ -26,7 +26,7 @@ class SuggestionsCollectionViewCell: UICollectionViewCell {
     
     
     @IBAction func lookButtonAction(_ sender: Any) {
-        print(categoryNameLabel.text)
+        print(categoryNameLabel.text!)
         
     }
     

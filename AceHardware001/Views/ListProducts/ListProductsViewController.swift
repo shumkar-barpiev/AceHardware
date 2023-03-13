@@ -44,7 +44,6 @@ class ListProductsViewController: UIViewController {
     
 //    MARK: getting products by category
     
-    
     private func fetchProductsByCategory(_ id: Int){
         getProductsByCategory({ [self] result in
             switch result{
@@ -120,6 +119,10 @@ extension ListProductsViewController: UITableViewDelegate, UITableViewDataSource
         
         let vc = controller.topViewController as! ProductDetailsViewController
         vc.user = self.user
+        var arrProduct = [Product]()
+        arrProduct.append(products[indexPath.row])
+        
+        vc.product = arrProduct
         
         var newArr = [Product]()
         for product in popularProducts{
@@ -131,11 +134,6 @@ extension ListProductsViewController: UITableViewDelegate, UITableViewDataSource
         }
         vc.relatedProducts = newArr
         
-        
-        var arrProduct = [Product]()
-        arrProduct.append(popularProducts[indexPath.row])
-        
-        vc.product = arrProduct
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false, completion: nil)
     }
