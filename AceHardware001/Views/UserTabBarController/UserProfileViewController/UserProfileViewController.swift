@@ -23,6 +23,7 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
         viewStyle()
         usernameLabel.text = user[0].userName
+        profileImageView.image = UIImage(named: user[0].userImageName)
         emailLabel.text = user[0].email
         phoneNumberLabel.text = user[0].phoneNumber
         lastActiveDateLabel.text = user[0].lastActiveDate
