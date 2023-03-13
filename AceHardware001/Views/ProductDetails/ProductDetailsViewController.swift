@@ -11,13 +11,19 @@ class ProductDetailsViewController: UIViewController {
     var user = [User]()
     var product = [Product]()
     var relatedProducts = [Product]()
+    var comments:[Comment] = [
+        .init(userName: "shumkar", userImageName: "myprofile", commentBody: "very perfect products ", date: "12.09.20"),
+        .init(userName: "Tori ", userImageName: "toriImage", commentBody: "I don't like this", date: "12.03.23")
+    ]
     
-   
+    
+    
+    
     @IBOutlet weak var commentBodyTextField: UITextField!
     
-    
-    
     @IBOutlet weak var relatedProductsCollectionView: UICollectionView!
+    
+    @IBOutlet weak var commentCollectionView: UICollectionView!
     
     
     
@@ -172,21 +178,45 @@ class ProductDetailsViewController: UIViewController {
     private func registerCells(){
         relatedProductsCollectionView.register(UINib(nibName: ProductCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
         
+        commentCollectionView.register(UINib(nibName: CommentCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CommentCollectionViewCell.identifier)
+        
     }
     
 }
 
 
 extension ProductDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return relatedProducts.count
+        switch collectionView{
+            case relatedProductsCollectionView:
+                return relatedProducts.count
+            case commentCollectionView:
+                return comments.count
+            default:
+                return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
-        cell.setUp(product: relatedProducts[indexPath.row])
         
-        return cell
+        switch collectionView{
+            case relatedProductsCollectionView:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
+                cell.setUp(product: relatedProducts[indexPath.row])
+                
+                return cell
+            case commentCollectionView:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCollectionViewCell.identifier, for: indexPath) as! CommentCollectionViewCell
+            
+                cell.setUp(comment: comments[indexPath.row])
+                
+                return cell
+            default:
+                return UICollectionViewCell()
+        }
+        
+        
     }
     
     
