@@ -18,7 +18,9 @@ class CommentCollectionViewCell: UICollectionViewCell {
     
     func setUp(comment: Comment){
         userNameLabel.text = comment.userName
-        userNameImageView.image = UIImage(named: comment.userImageName)
+        if let image = UIImage(named: comment.userImageName) {
+            userNameImageView.image = image
+        }
         dateLabel.text = comment.date
         commentBodyLabel.text = comment.commentBody
     }

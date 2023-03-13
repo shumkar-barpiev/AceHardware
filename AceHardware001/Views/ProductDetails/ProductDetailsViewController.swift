@@ -268,5 +268,37 @@ extension ProductDetailsViewController: UICollectionViewDelegate, UICollectionVi
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView{
+            case relatedProductsCollectionView:
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsNavViewController") as! ProductDetailsNavViewController
+                
+                let vc = controller.topViewController as! ProductDetailsViewController
+                vc.user = self.user
+                relatedProducts.append(self.product[0])
+                
+                var arrProduct = [Product]()
+                arrProduct.append(relatedProducts[indexPath.row])
+                
+                vc.product = arrProduct
+                
+                var newArr = [Product]()
+                for product in relatedProducts{
+                    if product.id == relatedProducts[indexPath.row].id{
+                        continue
+                    }else{
+                        newArr.append(product)
+                    }
+                }
+                vc.relatedProducts = newArr
+            
+                controller.modalPresentationStyle = .fullScreen
+                present(controller, animated: false, completion: nil)
+                
+            default:
+                return
+        }
+    }
+    
     
 }
