@@ -12,16 +12,16 @@ class ProductDetailsViewController: UIViewController {
     var product = [Product]()
     var relatedProducts = [Product]()
     var comments = [Comment]()
+    var likedProductsId = [Int]()
     
+    
+    @IBOutlet weak var likeButton: UIButton!
     
     
     
     @IBOutlet weak var commentBodyTextField: UITextField!
-    
     @IBOutlet weak var relatedProductsCollectionView: UICollectionView!
-    
     @IBOutlet weak var commentCollectionView: UICollectionView!
-    
     
     
     @IBOutlet weak var productDetailView: UIView!
@@ -50,6 +50,12 @@ class ProductDetailsViewController: UIViewController {
     }
     
     private func viewStyle(){
+        
+        if self.likedProductsId.contains(product[0].id){
+            self.likeButton.imageView?.image = UIImage(systemName: "heart.fill")
+        }
+        
+        
         self.productDetailView.roundCorners([.topLeft, .topRight], radius: 30)
         
         productImageView.image = UIImage(named: product[0].productImageName)
@@ -59,7 +65,7 @@ class ProductDetailsViewController: UIViewController {
         
     }
     
-//    MARK: Button actions
+    //    MARK: Button actions
     
     @IBAction func goBack(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
@@ -79,7 +85,42 @@ class ProductDetailsViewController: UIViewController {
     
     
     @IBAction func likeButtonAction(_ sender: Any) {
-        print("like button")
+        if self.likedProductsId.contains(product[0].id){
+            
+            let alertController = UIAlertController(title: "Эскертүү!!!", message: "Бул товар ансызда сиз жактырган товарлардын катарында. Өчүрүү үчүн жактырылгандар бөлүмүнө барыңыз.", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Түшүнүктүү", style: .default) { _ in
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsNavViewController") as! ProductDetailsNavViewController
+                let vc = controller.topViewController as! ProductDetailsViewController
+                vc.user = self.user
+                vc.relatedProducts = self.relatedProducts
+                vc.product = self.product
+                vc.likedProductsId = self.likedProductsId
+                
+                controller.modalPresentationStyle = .fullScreen
+                self.present(controller, animated: false, completion: nil)
+            }
+            
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+            
+        }
+        else{
+            // append to liked products
+            addToLikedProducts(user[0].id, product[0].id)
+            
+            let alertController = UIAlertController(title: "Куттуктайбыз!!!", message: "Товар ийгиликтүү жактырылгандар тизмесине кошулду. Көрүү үчүн жактырылгандар бөлүмүнө барыңыз.", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Рахмат", style: .default) { _ in
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
+                controller.user = self.user
+                controller.modalPresentationStyle = .fullScreen
+                self.present(controller, animated: false, completion: nil)
+            }
+            
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+            
+        }
+        
     }
     
     
@@ -119,7 +160,7 @@ class ProductDetailsViewController: UIViewController {
                 alertController.addAction(alertAction)
                 present(alertController, animated: true, completion: nil)
             }
-    
+            
         }else{
             let alertController = UIAlertController(title: "Эскертүү!!!", message: "Комментарий талаасына маани киргизиңиз.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Макул", style: .default) { _ in
@@ -131,7 +172,83 @@ class ProductDetailsViewController: UIViewController {
         }
     }
     
-//    MARK: implementing leaving comment event
+    
+    
+    
+    //    MARK: adding to liked products
+    public func addToLikedProducts(_ customerId: Int, _ productId: Int){
+        
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/likedProductsAddAPI.php" ) else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "customerId": customerId,
+            "productId": productId
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else{
+                return
+            }
+            // Convert HTTP Response Data to a String
+            if let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }else{
+                print("Something wrong")
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
+    //    MARK:  delete from liked products
+    public func deleteFromLikedProducts(_ customerID: Int, _ productId: Int){
+        
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/likedProductsDeleteAPI.php" ) else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "customerId": customerID,
+            "productId": productId
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else{
+                return
+            }
+            // Convert HTTP Response Data to a String
+            if let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }else{
+                print("something wrong")
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
+    
+    //    MARK: implementing leaving comment event
     public func leaveComment(_ customerID: Int, _ productId: Int, _ commentBody: String, _ commentCreatedDate: String) -> Bool{
         var returnVal = true
         guard let url = URL(string:"http://localhost/BackendAPIphp/api/leaveComment.php" ) else{
@@ -171,7 +288,7 @@ class ProductDetailsViewController: UIViewController {
     }
     
     
-//    MARK: register cell
+    //    MARK: register cell
     
     private func registerCells(){
         relatedProductsCollectionView.register(UINib(nibName: ProductCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
@@ -238,31 +355,31 @@ extension ProductDetailsViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView{
-            case relatedProductsCollectionView:
-                return relatedProducts.count
-            case commentCollectionView:
-                return comments.count
-            default:
-                return 0
+        case relatedProductsCollectionView:
+            return relatedProducts.count
+        case commentCollectionView:
+            return comments.count
+        default:
+            return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch collectionView{
-            case relatedProductsCollectionView:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
-                cell.setUp(product: relatedProducts[indexPath.row])
-                
-                return cell
-            case commentCollectionView:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCollectionViewCell.identifier, for: indexPath) as! CommentCollectionViewCell
+        case relatedProductsCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
+            cell.setUp(product: relatedProducts[indexPath.row])
             
-                cell.setUp(comment: comments[indexPath.row])
-                
-                return cell
-            default:
-                return UICollectionViewCell()
+            return cell
+        case commentCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCollectionViewCell.identifier, for: indexPath) as! CommentCollectionViewCell
+            
+            cell.setUp(comment: comments[indexPath.row])
+            
+            return cell
+        default:
+            return UICollectionViewCell()
         }
         
         
@@ -270,33 +387,34 @@ extension ProductDetailsViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView{
-            case relatedProductsCollectionView:
-                let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsNavViewController") as! ProductDetailsNavViewController
-                
-                let vc = controller.topViewController as! ProductDetailsViewController
-                vc.user = self.user
-                relatedProducts.append(self.product[0])
-                
-                var arrProduct = [Product]()
-                arrProduct.append(relatedProducts[indexPath.row])
-                
-                vc.product = arrProduct
-                
-                var newArr = [Product]()
-                for product in relatedProducts{
-                    if product.id == relatedProducts[indexPath.row].id{
-                        continue
-                    }else{
-                        newArr.append(product)
-                    }
-                }
-                vc.relatedProducts = newArr
+        case relatedProductsCollectionView:
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsNavViewController") as! ProductDetailsNavViewController
             
-                controller.modalPresentationStyle = .fullScreen
-                present(controller, animated: false, completion: nil)
-                
-            default:
-                return
+            let vc = controller.topViewController as! ProductDetailsViewController
+            vc.user = self.user
+            relatedProducts.append(self.product[0])
+            
+            var arrProduct = [Product]()
+            arrProduct.append(relatedProducts[indexPath.row])
+            
+            vc.product = arrProduct
+            
+            var newArr = [Product]()
+            for product in relatedProducts{
+                if product.id == relatedProducts[indexPath.row].id{
+                    continue
+                }else{
+                    newArr.append(product)
+                }
+            }
+            vc.relatedProducts = newArr
+            vc.likedProductsId = self.likedProductsId
+            
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: false, completion: nil)
+            
+        default:
+            return
         }
     }
     

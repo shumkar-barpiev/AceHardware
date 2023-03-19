@@ -15,6 +15,7 @@ class ListProductsViewController: UIViewController {
     var user = [User]()
     var products = [Product]()
     var popularProducts = [Product]()
+    var likeProductsId = [Int]()
     
     
     override func viewDidLoad() {
@@ -133,6 +134,7 @@ extension ListProductsViewController: UITableViewDelegate, UITableViewDataSource
             }
         }
         vc.relatedProducts = newArr
+        vc.likedProductsId = self.likeProductsId
         
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false, completion: nil)

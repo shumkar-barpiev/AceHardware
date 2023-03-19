@@ -18,12 +18,16 @@ class HomeViewController: UIViewController {
     
     var categories: [Category] = []
     var popularProducts: [Product] = []
+    var likedProducts: [Product] = []
+    
+    var likedProductsId = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         fetchAllCategories()
         fetchPopularProducts()
+        fetchLikedProducts(user[0].id)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,7 +38,7 @@ class HomeViewController: UIViewController {
         imageView.image = image
         navigationItem.titleView = imageView
     }
-
+    
     
     @IBAction func tapLogout(_ sender: Any) {
         let alertController = UIAlertController(title: "Чын элеби.", message: "Тиркемеден чыгууну каалайсызбы?", preferredStyle: .alert)
@@ -139,35 +143,92 @@ class HomeViewController: UIViewController {
         task.resume()
     }
     
+    
+    //    MARK: getting liked products
+    
+    private func fetchLikedProducts(_ id: Int){
+        getLikedProducts({ [self] result in
+            switch result{
+            case .success(let productObjects):
+                self.likedProducts = productObjects
+                for product in likedProducts {
+                    self.likedProductsId.append(product.id)
+                }
+                
+                print(self.likedProductsId)
+                
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }, id)
+        
+    }
+    
+    public func getLikedProducts(_ completion: @escaping (Result<[Product], Error>) -> Void, _ customerId: Int){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/likedProductsAPI.php" ) else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "customerId": customerId
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Product].self, from: data)
+                    self.likedProducts = result
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView{
-            case categoryCollectionView:
-                return categories.count
-            case productCollectionView:
-                return popularProducts.count
-            default:
-                return 0
+        case categoryCollectionView:
+            return categories.count
+        case productCollectionView:
+            return popularProducts.count
+        default:
+            return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-                
+        
         switch collectionView{
-            case categoryCollectionView:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-                cell.setUp(category: categories[indexPath.row])
-                return cell
-            case productCollectionView:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
-                cell.setUp(product: popularProducts[indexPath.row])
-                
-                return cell
-            default:
-                return UICollectionViewCell()
+        case categoryCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+            cell.setUp(category: categories[indexPath.row])
+            return cell
+        case productCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as! ProductCollectionViewCell
+            cell.setUp(product: popularProducts[indexPath.row])
+            
+            return cell
+        default:
+            return UICollectionViewCell()
         }
     }
     
@@ -175,7 +236,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == categoryCollectionView{
-//            print(categories[indexPath.row]," cliced!")
+            //            print(categories[indexPath.row]," cliced!")
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "ListProductsNavViewController") as! ListProductsNavViewController
             
             let vc = controller.topViewController as! ListProductsViewController
@@ -187,6 +248,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             arrCategory.append(categories[indexPath.row])
             
             vc.category = arrCategory
+            vc.likeProductsId = self.likedProductsId
             
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: false, completion: nil)
@@ -214,6 +276,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             arrProduct.append(popularProducts[indexPath.row])
             
             vc.product = arrProduct
+            vc.likedProductsId = self.likedProductsId
+            
+            
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: false, completion: nil)
             
