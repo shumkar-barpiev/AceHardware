@@ -20,7 +20,13 @@ class LikedProductsCollectionViewCell: UICollectionViewCell {
     func setUp(product: Product){
         self.productNameLabel.text = product.productName
         self.price.text = "\(round(100 * product.price) / 100) сом"
+        
+        self.productImageView.layer.shadowColor = UIColor.black.cgColor
+        self.productImageView.layer.shadowOffset = .zero
+        self.productImageView.layer.cornerRadius = 25
+        self.productImageView.layer.shadowOpacity = 0.5
         self.productImageView.image = UIImage(named: "\(product.productImageName)")
+        
         self.productDescription.text = product.description
         
     }
