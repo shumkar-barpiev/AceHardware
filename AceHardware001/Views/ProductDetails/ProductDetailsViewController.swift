@@ -211,41 +211,6 @@ class ProductDetailsViewController: UIViewController {
     }
     
     
-    //    MARK:  delete from liked products
-    public func deleteFromLikedProducts(_ customerID: Int, _ productId: Int){
-        
-        guard let url = URL(string:"http://localhost/BackendAPIphp/api/likedProductsDeleteAPI.php" ) else{
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        
-        // method body, headers
-        request.httpMethod = "POST"
-        
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body: [String: AnyHashable] = [
-            "customerId": customerID,
-            "productId": productId
-        ]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
-        
-        //make request
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else{
-                return
-            }
-            // Convert HTTP Response Data to a String
-            if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
-            }else{
-                print("something wrong")
-            }
-        }
-        
-        task.resume()
-    }
-    
     
     
     //    MARK: implementing leaving comment event
