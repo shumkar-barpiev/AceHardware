@@ -11,6 +11,8 @@
 		40198D9729C6F43F00453B06 /* SuggestionDetailNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40198D9629C6F43F00453B06 /* SuggestionDetailNavViewController.swift */; };
 		4020CE8429AE500F00A88183 /* SuggestionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4020CE8229AE500F00A88183 /* SuggestionsCollectionViewCell.swift */; };
 		4020CE8529AE500F00A88183 /* SuggestionsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4020CE8329AE500F00A88183 /* SuggestionsCollectionViewCell.xib */; };
+		4022192329C7466B00A5079F /* LikedProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022192129C7466B00A5079F /* LikedProductsCollectionViewCell.swift */; };
+		4022192429C7466B00A5079F /* LikedProductsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4022192229C7466B00A5079F /* LikedProductsCollectionViewCell.xib */; };
 		40785D2429A4CD7C00384B3B /* ProductDetailsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40785D2329A4CD7C00384B3B /* ProductDetailsNavViewController.swift */; };
 		40785D2629A4CDA900384B3B /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40785D2529A4CDA900384B3B /* ProductDetailsViewController.swift */; };
 		408519CF29A250EC0012579B /* ProductListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408519CD29A250EC0012579B /* ProductListTableViewCell.swift */; };
@@ -61,6 +63,8 @@
 		40198D9629C6F43F00453B06 /* SuggestionDetailNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailNavViewController.swift; sourceTree = "<group>"; };
 		4020CE8229AE500F00A88183 /* SuggestionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4020CE8329AE500F00A88183 /* SuggestionsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionsCollectionViewCell.xib; sourceTree = "<group>"; };
+		4022192129C7466B00A5079F /* LikedProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		4022192229C7466B00A5079F /* LikedProductsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikedProductsCollectionViewCell.xib; sourceTree = "<group>"; };
 		40785D2329A4CD7C00384B3B /* ProductDetailsNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsNavViewController.swift; sourceTree = "<group>"; };
 		40785D2529A4CDA900384B3B /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		408519CD29A250EC0012579B /* ProductListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +147,15 @@
 				4020CE8329AE500F00A88183 /* SuggestionsCollectionViewCell.xib */,
 			);
 			path = SuggestionsCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		4022192029C745FE00A5079F /* LikedProductCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4022192129C7466B00A5079F /* LikedProductsCollectionViewCell.swift */,
+				4022192229C7466B00A5079F /* LikedProductsCollectionViewCell.xib */,
+			);
+			path = LikedProductCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		40785D2129A4CD3200384B3B /* ProductDetails */ = {
@@ -284,6 +297,7 @@
 		CE6D5F5229896517001B9CD3 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				4022192029C745FE00A5079F /* LikedProductCollectionViewCell */,
 				40D07D0829BF8885004BE33A /* CommentCollectionViewCell */,
 				4020CE8129AE4FD200A88183 /* SuggestionsCollectionViewCell */,
 				CE89CC0B298B99D500ADFDEA /* ProductCollectionViewCell */,
@@ -536,6 +550,7 @@
 				CED865902948811500097C12 /* Assets.xcassets in Resources */,
 				CED8658B2948811300097C12 /* Main.storyboard in Resources */,
 				4020CE8529AE500F00A88183 /* SuggestionsCollectionViewCell.xib in Resources */,
+				4022192429C7466B00A5079F /* LikedProductsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +573,7 @@
 				CEB12F1A294B290300A8A970 /* UserProfileNavController.swift in Sources */,
 				CE62F5AB297FED9300246AB2 /* AdminPanelViewController.swift in Sources */,
 				40D07D0E29BF8EA9004BE33A /* CommentModel.swift in Sources */,
+				4022192329C7466B00A5079F /* LikedProductsCollectionViewCell.swift in Sources */,
 				CE0B9102298A8672001139CB /* ProductModel.swift in Sources */,
 				CEC9F890294A014000A938E7 /* WishListViewController.swift in Sources */,
 				40785D2429A4CD7C00384B3B /* ProductDetailsNavViewController.swift in Sources */,

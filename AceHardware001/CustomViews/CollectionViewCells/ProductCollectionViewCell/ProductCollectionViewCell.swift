@@ -18,7 +18,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     func setUp(product: Product){
         productImageView.image = UIImage(named: product.productImageName)
         productNameLabel.text = product.productName
-        productPriceLabel.text = "\(round(100 * product.price) / 100) som"
+        productPriceLabel.text = "\(round(100 * product.price) / 100) сом"
     }
     
     
