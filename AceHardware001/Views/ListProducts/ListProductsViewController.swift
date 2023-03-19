@@ -50,7 +50,7 @@ class ListProductsViewController: UIViewController {
             case .success(let productObjects):
                 self.products = productObjects
                 DispatchQueue.main.async {
-                    productListTableView.reloadData()
+                    self.productListTableView.reloadData()
                 }
             case .failure(let error):
                 print(error)

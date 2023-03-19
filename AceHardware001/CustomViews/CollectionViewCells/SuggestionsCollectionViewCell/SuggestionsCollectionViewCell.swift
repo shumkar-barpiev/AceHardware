@@ -12,7 +12,9 @@ class SuggestionsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var categoryDescriptionLabel: UILabel!
-    @IBOutlet weak var lookButton: UIButton!
+    
+    @IBOutlet weak var lookButtonLabel: UILabel!
+    
     
     static let identifier = "SuggestionsCollectionViewCell"
     
@@ -21,14 +23,9 @@ class SuggestionsCollectionViewCell: UICollectionViewCell {
         categoryImageView.image = UIImage(named: category.categoryImageName)
         categoryNameLabel.text = category.categoryName
         categoryDescriptionLabel.text = category.categoryDescription
-        lookButton.layer.cornerRadius = 15
-    }
-    
-    
-    @IBAction func lookButtonAction(_ sender: Any) {
-        print(categoryNameLabel.text!)
+        lookButtonLabel.layer.masksToBounds = true
+        lookButtonLabel.layer.cornerRadius = 15
         
     }
-    
     
 }

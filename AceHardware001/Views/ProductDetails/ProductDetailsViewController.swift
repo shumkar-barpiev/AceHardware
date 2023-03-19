@@ -188,7 +188,7 @@ class ProductDetailsViewController: UIViewController {
             case .success(let commentObjects):
                 self.comments = commentObjects
                 DispatchQueue.main.async {
-                    commentCollectionView.reloadData()
+                    self.commentCollectionView.reloadData()
                 }
             case .failure(let error):
                 print(error)

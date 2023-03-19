@@ -74,7 +74,7 @@ class HomeViewController: UIViewController {
             case .success(let categoryObjects):
                 self.categories = categoryObjects
                 DispatchQueue.main.async {
-                    categoryCollectionView.reloadData()
+                    self.categoryCollectionView.reloadData()
                 }
             case .failure(let error):
                 print(error)
@@ -110,7 +110,7 @@ class HomeViewController: UIViewController {
             case .success(let productObjects):
                 self.popularProducts = productObjects
                 DispatchQueue.main.async {
-                    productCollectionView.reloadData()
+                    self.productCollectionView.reloadData()
                 }
             case .failure(let error):
                 print(error)

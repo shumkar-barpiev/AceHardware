@@ -75,7 +75,7 @@ class SuggestionsViewController: UIViewController {
             case .success(let categoryObjects):
                 self.suggestionCategories = categoryObjects
                 DispatchQueue.main.async {
-                    suggestionsCollectionView.reloadData()
+                    self.suggestionsCollectionView.reloadData()
                 }
             case .failure(let error):
                 print(error)
@@ -120,5 +120,17 @@ extension SuggestionsViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "SuggestionDetailNavViewController") as! SuggestionDetailNavViewController
+        
+        let vc = controller.topViewController as! SuggestionDetailViewController
+        vc.user = self.user
+        var tempArr = [Category]()
+        tempArr.append(suggestionCategories[indexPath.row])
+        vc.category = tempArr
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
+    }
     
 }
