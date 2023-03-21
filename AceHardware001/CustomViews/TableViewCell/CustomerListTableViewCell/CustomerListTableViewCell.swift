@@ -13,18 +13,24 @@ class CustomerListTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var registeredDateLabel: UILabel!
+    @IBOutlet weak var isAdminLabel: UILabel!
+    
     
     
     static let identifier = "CustomerListTableViewCell"
     
     func setUp(customer: User ){
-        customerImageView.layer.cornerRadius = 15
         userNameLabel.text = customer.userName
         emailLabel.text = customer.email
         registeredDateLabel.text = customer.lastActiveDate
-        if let image = UIImage(named: customer.userImageName ) {
-            customerImageView.image = image
+        customerImageView.image =  UIImage(named: customer.userImageName ) ?? UIImage(systemName: "person")
+        
+        if customer.isAdmin == 1{
+            isAdminLabel.text = "Admin"
+        }else{
+            isAdminLabel.text = "Customer"
         }
+        
     }
     
 }
