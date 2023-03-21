@@ -19,6 +19,8 @@
 		40059C6329C974B000F5CB2D /* AdminProductListNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40059C6229C974B000F5CB2D /* AdminProductListNavViewController.swift */; };
 		40059C6529C974BF00F5CB2D /* AdminCustomerListNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40059C6429C974BF00F5CB2D /* AdminCustomerListNavViewController.swift */; };
 		40059C6729C974CF00F5CB2D /* AdminCategoryListNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40059C6629C974CF00F5CB2D /* AdminCategoryListNavViewController.swift */; };
+		40131F3129C998B900C00A74 /* CustomerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40131F2F29C998B900C00A74 /* CustomerListTableViewCell.swift */; };
+		40131F3229C998B900C00A74 /* CustomerListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40131F3029C998B900C00A74 /* CustomerListTableViewCell.xib */; };
 		40198D9529C6F3B900453B06 /* SuggestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40198D9429C6F3B900453B06 /* SuggestionDetailViewController.swift */; };
 		40198D9729C6F43F00453B06 /* SuggestionDetailNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40198D9629C6F43F00453B06 /* SuggestionDetailNavViewController.swift */; };
 		4020CE8429AE500F00A88183 /* SuggestionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4020CE8229AE500F00A88183 /* SuggestionsCollectionViewCell.swift */; };
@@ -87,6 +89,8 @@
 		40059C6229C974B000F5CB2D /* AdminProductListNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductListNavViewController.swift; sourceTree = "<group>"; };
 		40059C6429C974BF00F5CB2D /* AdminCustomerListNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCustomerListNavViewController.swift; sourceTree = "<group>"; };
 		40059C6629C974CF00F5CB2D /* AdminCategoryListNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCategoryListNavViewController.swift; sourceTree = "<group>"; };
+		40131F2F29C998B900C00A74 /* CustomerListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerListTableViewCell.swift; sourceTree = "<group>"; };
+		40131F3029C998B900C00A74 /* CustomerListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerListTableViewCell.xib; sourceTree = "<group>"; };
 		40198D9429C6F3B900453B06 /* SuggestionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailViewController.swift; sourceTree = "<group>"; };
 		40198D9629C6F43F00453B06 /* SuggestionDetailNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailNavViewController.swift; sourceTree = "<group>"; };
 		4020CE8229AE500F00A88183 /* SuggestionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +264,15 @@
 			path = CategoryNavViewController;
 			sourceTree = "<group>";
 		};
+		40131F2E29C9984A00C00A74 /* CustomerListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				40131F2F29C998B900C00A74 /* CustomerListTableViewCell.swift */,
+				40131F3029C998B900C00A74 /* CustomerListTableViewCell.xib */,
+			);
+			path = CustomerListTableViewCell;
+			sourceTree = "<group>";
+		};
 		40198D9229C6F35A00453B06 /* SuggestionDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +362,7 @@
 		408519CB29A250590012579B /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				40131F2E29C9984A00C00A74 /* CustomerListTableViewCell */,
 				408519CC29A250830012579B /* CategoryProductListTableViewCell */,
 			);
 			path = TableViewCell;
@@ -719,6 +733,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40D07D0C29BF88FA004BE33A /* CommentCollectionViewCell.xib in Resources */,
+				40131F3229C998B900C00A74 /* CustomerListTableViewCell.xib in Resources */,
 				408519D029A250EC0012579B /* ProductListTableViewCell.xib in Resources */,
 				CE6D5F572989657F001B9CD3 /* CategoryCollectionViewCell.xib in Resources */,
 				CED865932948811500097C12 /* LaunchScreen.storyboard in Resources */,
@@ -788,6 +803,7 @@
 				CED8658E2948811300097C12 /* AceHardware001.xcdatamodeld in Sources */,
 				400453BA29C85C3F00A14231 /* AdminOrderNavViewController.swift in Sources */,
 				400453B729C85C1700A14231 /* AdminListNavViewController.swift in Sources */,
+				40131F3129C998B900C00A74 /* CustomerListTableViewCell.swift in Sources */,
 				CEC9F892294A014C00A938E7 /* SuggestionsViewController.swift in Sources */,
 				CE89CC11298BA50800ADFDEA /* ProductCardView.swift in Sources */,
 				CEC9F894294A015700A938E7 /* HomeViewController.swift in Sources */,
