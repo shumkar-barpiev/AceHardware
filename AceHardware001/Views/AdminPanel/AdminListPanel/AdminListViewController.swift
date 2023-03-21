@@ -23,4 +23,27 @@ class AdminListViewController: UIViewController {
         present(controller, animated: false)
     }
     
+    
+    @IBAction func customersButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "AdminCustomerListNavViewController") as! AdminCustomerListNavViewController
+
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false)
+    }
+    
+    
+    @IBAction func categoryButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "AdminCategoryListNavViewController") as! AdminCategoryListNavViewController
+
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false)
+    }
+    
+    
+    @IBAction func productButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "AdminProductListNavViewController") as! AdminProductListNavViewController
+
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false)
+    }
 }
