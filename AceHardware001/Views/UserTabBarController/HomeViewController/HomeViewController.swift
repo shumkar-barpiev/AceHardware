@@ -155,8 +155,6 @@ class HomeViewController: UIViewController {
                     self.likedProductsId.append(product.id)
                 }
                 
-                print(self.likedProductsId)
-                
             case .failure(let error):
                 print(error)
                 break

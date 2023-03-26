@@ -9,6 +9,8 @@ import UIKit
 
 class UserProfileViewController: UIViewController {
     var user = [User]()
+    var userCart = [Cart]()
+    
     @IBOutlet weak var parentView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileView: UIView!
@@ -29,6 +31,8 @@ class UserProfileViewController: UIViewController {
         emailLabel.text = user[0].email
         phoneNumberLabel.text = user[0].phoneNumber
         lastActiveDateLabel.text = user[0].lastActiveDate
+        
+        print("Profile \(userCart)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
