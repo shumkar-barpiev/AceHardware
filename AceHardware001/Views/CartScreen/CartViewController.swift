@@ -125,7 +125,7 @@ class CartViewController: UIViewController {
                     DispatchQueue.main.async {
                         var summa = 0.0
                         
-                        for product in cartProducts {
+                        for product in self.cartProducts {
                             summa += product.price
                         }
                         
@@ -133,10 +133,6 @@ class CartViewController: UIViewController {
                         
                         self.cartTableView.reloadData()
                     }
-                    
-                    
-                }else{
-                    self.totalSum.text = "0.0 сом"
                 }
                 
                 
@@ -181,7 +177,7 @@ class CartViewController: UIViewController {
         task.resume()
     }
     
-//    MARKL register cell
+//    MARK: register cell
     func registerCells(){
         cartTableView.register( UINib(nibName: ProductListTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ProductListTableViewCell.identifier )
     }

@@ -10,8 +10,10 @@ import CryptoKit
 
 class SignInViewController: UIViewController {
     private var users = [User]()
+    private var carts = [Cart]()
     private var allEmails = [String]()
     private var allPasswords = [String]()
+    private var allCustomerId = [Int]()
     private var isExistUser = false
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,6 +26,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         viewStyle()
         fetchAllUsers()
+        fetchAllCarts()
     }
     
     private func viewStyle(){
@@ -40,7 +43,7 @@ class SignInViewController: UIViewController {
         
         self.signInButton.layer.cornerRadius = 25
     }
-
+    
     @IBAction func goBackButtonAction(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "EnterScreenViewController") as! EnterScreenViewController
         controller.modalPresentationStyle = .fullScreen
@@ -53,6 +56,7 @@ class SignInViewController: UIViewController {
             let hashPass = SHA512.hash(data: Data(tempPassword.utf8))
             getEmails()
             getPasswords()
+            getCustomerId()
             
             if allEmails.contains(emailTextField.text!) && allPasswords.contains("\(hashPass)"){
                 for user in users {
@@ -62,6 +66,12 @@ class SignInViewController: UIViewController {
                             controller.modalPresentationStyle = .fullScreen
                             present(controller, animated: false, completion: nil)
                         }else{
+                            
+                            if !allCustomerId.contains(user.id){
+                                let cartName = "\(user.userName) Cart"
+                                createCartForCustomer(cartName, user.id)
+                            }
+                            
                             let controller = storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
                             controller.modalPresentationStyle = .fullScreen
                             controller.user.append(user)
@@ -97,6 +107,7 @@ class SignInViewController: UIViewController {
     }
     
     
+    //    MARK: fetch all users
     private func fetchAllUsers(){
         getAllUsers { [self] result in
             switch result{
@@ -130,6 +141,79 @@ class SignInViewController: UIViewController {
         task.resume()
     }
     
+    //    MARK: fetch all carts of customer
+    
+    private func fetchAllCarts(){
+        getAllCarts { [self] result in
+            switch result{
+            case .success(let cartObjects):
+                self.carts = cartObjects
+                
+                print(self.carts)
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+    }
+    
+    private func getAllCarts(completion: @escaping (Result<[Cart], Error>) -> Void){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/customerCartAPI.php" ) else{
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Cart].self, from: data)
+                    self.carts = result
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+                
+            }
+        }
+        task.resume()
+    }
+    
+    //    MARK: create cart for customer
+    
+    public func createCartForCustomer(_ cartName: String, _ customerId: Int){
+        
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/createCustomerCartAPI.php" ) else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "cartName": cartName,
+            "customerId": customerId
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else{
+                return
+            }
+            // Convert HTTP Response Data to a String
+            if let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }else{
+                print("Something wrong")
+            }
+        }
+        
+        task.resume()
+    }
+    
     private func getEmails(){
         for user in users {
             allEmails.append(user.email)
@@ -143,4 +227,9 @@ class SignInViewController: UIViewController {
         }
     }
     
+    private func getCustomerId(){
+        for cart in carts {
+            allCustomerId.append(cart.customerId)
+        }
+    }
 }
