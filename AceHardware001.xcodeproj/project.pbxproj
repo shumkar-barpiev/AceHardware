@@ -33,6 +33,8 @@
 		4023311129C85089000BFC05 /* AdminCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023311029C85089000BFC05 /* AdminCategoryViewController.swift */; };
 		4023311529C85763000BFC05 /* AdminProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023311429C85763000BFC05 /* AdminProductViewController.swift */; };
 		4023311729C8577E000BFC05 /* AdminProductNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023311629C8577E000BFC05 /* AdminProductNavViewController.swift */; };
+		403E8A6B29D2C20900F1A12B /* AdminProductCommentsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E8A6A29D2C20900F1A12B /* AdminProductCommentsNavViewController.swift */; };
+		403E8A6D29D2C22D00F1A12B /* AdminProductCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E8A6C29D2C22D00F1A12B /* AdminProductCommentsViewController.swift */; };
 		40785D2429A4CD7C00384B3B /* ProductDetailsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40785D2329A4CD7C00384B3B /* ProductDetailsNavViewController.swift */; };
 		40785D2629A4CDA900384B3B /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40785D2529A4CDA900384B3B /* ProductDetailsViewController.swift */; };
 		408519CF29A250EC0012579B /* ProductListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408519CD29A250EC0012579B /* ProductListTableViewCell.swift */; };
@@ -106,6 +108,8 @@
 		4023311029C85089000BFC05 /* AdminCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCategoryViewController.swift; sourceTree = "<group>"; };
 		4023311429C85763000BFC05 /* AdminProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductViewController.swift; sourceTree = "<group>"; };
 		4023311629C8577E000BFC05 /* AdminProductNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductNavViewController.swift; sourceTree = "<group>"; };
+		403E8A6A29D2C20900F1A12B /* AdminProductCommentsNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductCommentsNavViewController.swift; sourceTree = "<group>"; };
+		403E8A6C29D2C22D00F1A12B /* AdminProductCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductCommentsViewController.swift; sourceTree = "<group>"; };
 		40785D2329A4CD7C00384B3B /* ProductDetailsNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsNavViewController.swift; sourceTree = "<group>"; };
 		40785D2529A4CDA900384B3B /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		408519CD29A250EC0012579B /* ProductListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewCell.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 		400453B429C85BAA00A14231 /* AdminCommentsPanel */ = {
 			isa = PBXGroup;
 			children = (
+				403E8A6829D2C15E00F1A12B /* AdminProductComments */,
 				400453BB29C85C4300A14231 /* AdminCommentNavViewController */,
 				400453BE29C85FCD00A14231 /* AdminCommentViewController.swift */,
 			);
@@ -355,6 +360,23 @@
 				4023311629C8577E000BFC05 /* AdminProductNavViewController.swift */,
 			);
 			path = AdminProductNavPanel;
+			sourceTree = "<group>";
+		};
+		403E8A6829D2C15E00F1A12B /* AdminProductComments */ = {
+			isa = PBXGroup;
+			children = (
+				403E8A6929D2C1A400F1A12B /* AdminProductCommentsNavViewController */,
+				403E8A6C29D2C22D00F1A12B /* AdminProductCommentsViewController.swift */,
+			);
+			path = AdminProductComments;
+			sourceTree = "<group>";
+		};
+		403E8A6929D2C1A400F1A12B /* AdminProductCommentsNavViewController */ = {
+			isa = PBXGroup;
+			children = (
+				403E8A6A29D2C20900F1A12B /* AdminProductCommentsNavViewController.swift */,
+			);
+			path = AdminProductCommentsNavViewController;
 			sourceTree = "<group>";
 		};
 		40785D2129A4CD3200384B3B /* ProductDetails */ = {
@@ -780,6 +802,7 @@
 				40131F3629C9A70000C00A74 /* CategoryListTableViewCell.swift in Sources */,
 				CE6EB23529897EBB0082F200 /* CardView.swift in Sources */,
 				4086F61929A4F71600F1A680 /* ProductDetailView.swift in Sources */,
+				403E8A6D29D2C22D00F1A12B /* AdminProductCommentsViewController.swift in Sources */,
 				40E7B64B29D058BB00A3EC4E /* CartModel.swift in Sources */,
 				40059C6129C9747D00F5CB2D /* AdminCategoryListViewController.swift in Sources */,
 				CECDE9C1297BCEE2000D7481 /* UserModel.swift in Sources */,
@@ -828,6 +851,7 @@
 				CE89CC11298BA50800ADFDEA /* ProductCardView.swift in Sources */,
 				CEC9F894294A015700A938E7 /* HomeViewController.swift in Sources */,
 				4023311129C85089000BFC05 /* AdminCategoryViewController.swift in Sources */,
+				403E8A6B29D2C20900F1A12B /* AdminProductCommentsNavViewController.swift in Sources */,
 				40198D9729C6F43F00453B06 /* SuggestionDetailNavViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

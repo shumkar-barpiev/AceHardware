@@ -9,6 +9,8 @@ import UIKit
 
 class AdminPanelViewController: UIViewController {
     
+    var user = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +53,10 @@ class AdminPanelViewController: UIViewController {
     //    MARK: comment button action
     @IBAction func commentButtonAction(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "AdminCommentNavViewController") as! AdminCommentNavViewController
+        
+        let commentAdminController  = controller.topViewController as! AdminCommentViewController
+        
+        commentAdminController.user = self.user
         
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false)

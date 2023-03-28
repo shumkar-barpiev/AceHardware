@@ -10,6 +10,7 @@ import UIKit
 class AdminCommentViewController: UIViewController {
 
     var products = [Product]()
+    var user = [User]()
     
     
     
@@ -94,5 +95,22 @@ extension AdminCommentViewController: UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "AdminProductCommentsNavViewController") as! AdminProductCommentsNavViewController
+        
+        let vc = controller.topViewController as! AdminProductCommentsViewController
+        
+        var products: [Product] = [products[indexPath.row]]
+        
+        vc.product = products
+        vc.user = self.user
+        
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
+        
+        
+    }
 }
