@@ -13,8 +13,9 @@ class WishListViewController: UIViewController {
     
     @IBOutlet weak var wishListView: UIView!
     var user = [User]()
-    
     var likedProducts: [Product] = []
+    var popularProducts: [Product] = []
+    var likedProductsId = [Int]()
     
     
     
@@ -23,6 +24,7 @@ class WishListViewController: UIViewController {
         viewStyle()
         registerCells()
         fetchLikedProducts(user[0].id)
+        fetchPopularProducts()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -125,6 +127,41 @@ class WishListViewController: UIViewController {
         task.resume()
     }
     
+//    MARK: fetch popular products
+    private func fetchPopularProducts(){
+        getPopularProducts{ [self] result in
+            switch result{
+            case .success(let productObjects):
+                self.popularProducts = productObjects
+                
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+    }
+    
+    public func getPopularProducts(completion: @escaping (Result<[Product], Error>) -> Void){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/popularProductsAPI.php" ) else{
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Product].self, from: data)
+                    self.popularProducts = result
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    
     
 }
 
@@ -145,9 +182,37 @@ extension WishListViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let alertController = UIAlertController(title: "Иш-аракеттер тизмеси.", message: "", preferredStyle: .alert)
-        let alertAddToCartAction = UIAlertAction(title: "Корзинага кошуу", style: .default) { _ in
-//            Add to cart implementation
+        let alertLookDetails = UIAlertAction(title: "Деталдуу карап чыгуу", style: .default) { _ in
+
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsNavViewController") as! ProductDetailsNavViewController
             
+            let vc = controller.topViewController as! ProductDetailsViewController
+            vc.user = self.user
+            
+            var newArr = [Product]()
+            for product in self.popularProducts{
+                if product.id == self.likedProducts[indexPath.row].id{
+                    continue
+                }else{
+                    newArr.append(product)
+                }
+            }
+            vc.relatedProducts = newArr
+            
+            
+            var arrProduct = [Product]()
+            arrProduct.append(self.likedProducts[indexPath.row])
+            
+            vc.product = arrProduct
+            
+            for product in self.likedProducts {
+                self.likedProductsId.append(product.id)
+            }
+            vc.likedProductsId = self.likedProductsId
+            
+            
+            controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: false, completion: nil)
         }
         let alertDeleteAction = UIAlertAction(title: "Жактырылгандардан өчүрүү", style: .default) { _ in
             self.deleteFromLikedProducts(self.user[0].id, self.likedProducts[indexPath.row].id)
@@ -168,7 +233,7 @@ extension WishListViewController: UICollectionViewDelegate, UICollectionViewData
             
         }
         
-        alertController.addAction(alertAddToCartAction)
+        alertController.addAction(alertLookDetails)
         alertController.addAction(alertDeleteAction)
         alertController.addAction(alertCancelAction)
         present(alertController, animated: true, completion: nil)

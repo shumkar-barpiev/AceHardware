@@ -52,7 +52,7 @@ class AdminProductCommentsViewController: UIViewController {
 
             let result = leaveComment(customerID, productID, commentBody, today)
             
-            if true{
+            if result {
                 let alertController = UIAlertController(title: "", message: "Комментарийиңиз ийгиликтүү сакталды.", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "Макул", style: .default) { _ in
                     let navController = self.storyboard?.instantiateViewController(withIdentifier: "AdminCommentNavViewController") as! AdminCommentNavViewController
