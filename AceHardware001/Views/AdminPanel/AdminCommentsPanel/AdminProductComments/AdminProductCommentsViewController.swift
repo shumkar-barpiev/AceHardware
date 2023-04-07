@@ -33,6 +33,9 @@ class AdminProductCommentsViewController: UIViewController {
     
     @IBAction func goBackAction(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "AdminCommentNavViewController") as! AdminCommentNavViewController
+        let adminCommentViewController = controller.topViewController as! AdminCommentViewController
+        
+        adminCommentViewController.user = self.user
         
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false)

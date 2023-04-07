@@ -26,6 +26,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         viewStyle()
         fetchAllUsers()
+        
         fetchAllCarts()
     }
     
