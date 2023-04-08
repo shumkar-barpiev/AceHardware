@@ -29,6 +29,10 @@ class AdminCommentViewController: UIViewController {
 
     @IBAction func goBack(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "AdminNavBarController") as! AdminNavBarController
+        
+        let adminPanelController = controller.topViewController as! AdminPanelViewController
+        
+        adminPanelController.user = self.user
 
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false)
