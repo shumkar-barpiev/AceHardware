@@ -76,9 +76,11 @@ class UserProfileViewController: UIViewController {
     
     @IBAction func editAccountButtonAction(_ sender: Any) {
         
-        print("Edit account")
-        
-        print(user)
+        let controller = storyboard?.instantiateViewController(withIdentifier: "UserUpdatesNavViewController") as! UserUpdatesNavViewController
+        let updateViewController = controller.topViewController as! UserUpdatePageViewController
+        updateViewController.user = self.user
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
     }
     
     
