@@ -21,6 +21,7 @@ class AdminProductViewController: UIViewController {
     var categoryNames = [String]()
     
     var categories: [Category] = []
+    var products: [Product] = []
     
     
     var categoryPickerView = UIPickerView()
@@ -33,6 +34,7 @@ class AdminProductViewController: UIViewController {
         categoryPickerView.dataSource = self
         
         fetchAllCategories()
+        fetchAllProducts()
     }
     
     
@@ -43,14 +45,64 @@ class AdminProductViewController: UIViewController {
         present(controller, animated: false)
     }
     
+//    fetch all products
+    private func fetchAllProducts(){
+        getAllProducts{ [self] result in
+            switch result{
+            case .success(let productObjects):
+                self.products = productObjects
+                
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+    }
+    
+    
+    public func getAllProducts(completion: @escaping (Result<[Product], Error>) -> Void){
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/productAPI.php" ) else{
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error{
+                completion(.failure(error))
+            }else if let data = data{
+                do{
+                    let result = try JSONDecoder().decode([Product].self, from: data)
+                    self.products = result
+                    completion(.success(result))
+                }catch{
+                    completion(.failure(error))
+                }
+            }
+        }
+        task.resume()
+    }
+    
     @IBAction func createButtonAction(_ sender: Any) {
         
         if !(self.productNameTextField.text?.isEmpty ?? true)! && !(self.categoryTextField.text?.isEmpty ?? true)! && !(self.productImageNameTextField.text?.isEmpty ?? true)! && !(self.productDescriptionTextField.text?.isEmpty ?? true)! && !(self.priceTextField.text?.isEmpty ?? true)! {
             
             if let price = Double("\(self.priceTextField.text!)"){
-                let didSave = createProduct(self.productNameTextField.text!, self.productImageNameTextField.text!, price, self.productDescriptionTextField.text!)
+                var tempCategoryId = 0
+                var tempProductId = 0
                 
-                if didSave{
+                if(products.count > 0){
+                    tempProductId = products[products.count-1].id+1
+                }
+                
+                for category in categories {
+                    if category.categoryName == categoryTextField.text{
+                        tempCategoryId = category.id
+                    }
+                }
+                
+                let didSaveProduct = createProduct(self.productNameTextField.text!, self.productImageNameTextField.text!, price, self.productDescriptionTextField.text!)
+                                
+                let didSaveProductCategory = insertingProductCategory(tempProductId, tempCategoryId)
+                
+                if didSaveProduct && didSaveProductCategory{
                     let alertController = UIAlertController(title: .none, message: "Продукт ийгиликтүү түзүлдү.", preferredStyle: .alert)
                     let alertAction = UIAlertAction(title: "Макул", style: .cancel) { _ in
                         let controller = self.storyboard?.instantiateViewController(withIdentifier: "AdminNavBarController") as! AdminNavBarController
@@ -90,7 +142,7 @@ class AdminProductViewController: UIViewController {
     
     //    MARK: creating new product function
     private func createProduct(_ productName: String, _ productImageName: String,  _ price: Double, _ productDescription: String ) -> Bool{
-        var createUserResponse = true
+        var createProductResponse = true
         
         guard let url = URL(string:"http://localhost/BackendAPIphp/api/productAPI.php" ) else{
             return false
@@ -120,12 +172,51 @@ class AdminProductViewController: UIViewController {
             if let dataString = String(data: data, encoding: .utf8) {
                 print("Response data string:\n \(dataString)")
             }else{
-                createUserResponse = false
+                createProductResponse = false
             }
         }
         task.resume()
         
-        return createUserResponse
+        return createProductResponse
+    }
+    
+    
+    //    MARK: creating new product function
+    private func insertingProductCategory(_ productId: Int, _ categoryId: Int ) -> Bool{
+        var insertProductCategoryResponse = true
+        
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/insertProductCategoryAPI.php" ) else{
+            return false
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "productId": productId,
+            "categoryId": categoryId
+            
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else{
+                return
+            }
+            // Convert HTTP Response Data to a String
+            if let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }else{
+                insertProductCategoryResponse = false
+            }
+        }
+        task.resume()
+        
+        return insertProductCategoryResponse
     }
     
     // MARK: fetching all categories
