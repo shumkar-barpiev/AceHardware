@@ -2234,6 +2234,29 @@
             </objects>
             <point key="canvasLocation" x="8371" y="3361"/>
         </scene>
+        <!--Update Order Status-->
+        <scene sceneID="sxc-cR-iNj">
+            <objects>
+                <viewController storyboardIdentifier="OrderStatusViewController" id="an0-ye-c6Q" customClass="OrderStatusViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DWX-xa-w9U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="udW-gQ-yRa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Update Order Status" id="d6S-zp-5n8">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="9AN-Mm-mA0">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="goBack:" destination="an0-ye-c6Q" id="L7L-oQ-swi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kem-Ca-WZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10862.318840579712" y="3377.6785714285711"/>
+        </scene>
         <!--Comments-->
         <scene sceneID="oqQ-0v-2yz">
             <objects>
@@ -2495,6 +2518,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uwr-5g-RVJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7964" y="-1341"/>
+        </scene>
+        <!--Order Status Navigation View Controller-->
+        <scene sceneID="Vnz-Bk-t9a">
+            <objects>
+                <navigationController storyboardIdentifier="OrderStatusNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="A0V-Qn-hvp" customClass="OrderStatusNavigationViewController" customModule="AceHardware001" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZaQ-Rt-FO8">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="an0-ye-c6Q" kind="relationship" relationship="rootViewController" id="ciq-Fk-yQE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RWx-lT-ATf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9952.1739130434798" y="3377.6785714285711"/>
         </scene>
     </scenes>
     <resources>
