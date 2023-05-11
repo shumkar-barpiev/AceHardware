@@ -56,6 +56,17 @@ class CartViewController: UIViewController {
     }
     
     
+    @IBAction func myOrdersAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "CustomerOrdersNavigationViewController") as! CustomerOrdersNavigationViewController
+        let orderViewController = controller.topViewController as! CustomerOrdersViewController
+        orderViewController.user = self.user
+        
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
+    }
+    
+    
+    
     @IBAction func sendOrderButtonAction(_ sender: Any) {
         
         if(cartProducts.count > 0){

@@ -72,18 +72,6 @@ class OrderViewController: UIViewController {
             let customerId = user[0].id
             
             
-            
-            print("---------------------------------\n")
-            print(orderName)
-            print(orderDate)
-            print(orderDescription)
-            print(customerId)
-            print(customerName)
-            print(address)
-            print(phoneNumber)
-            print(totalSum)
-            print(orderStatus)
-            
             let didSendOrder = sendOrder(orderName, orderDate, orderDescription, customerId, customerName, address, phoneNumber, totalSum, orderStatus)
             
             
