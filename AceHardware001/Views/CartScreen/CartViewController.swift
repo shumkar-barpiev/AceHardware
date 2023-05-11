@@ -56,6 +56,15 @@ class CartViewController: UIViewController {
     }
     
     
+    @IBAction func sendOrderButtonAction(_ sender: Any) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "OrderNavViewController") as! OrderNavViewController
+        let orderViewController = controller.topViewController as! OrderViewController
+        orderViewController.user = self.user
+        orderViewController.cartProducts = self.cartProducts
+        
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
+    }
     
     //    MARK: fetching customer cart
         

@@ -19,6 +19,8 @@
 		40059C6329C974B000F5CB2D /* AdminProductListNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40059C6229C974B000F5CB2D /* AdminProductListNavViewController.swift */; };
 		40059C6529C974BF00F5CB2D /* AdminCustomerListNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40059C6429C974BF00F5CB2D /* AdminCustomerListNavViewController.swift */; };
 		40059C6729C974CF00F5CB2D /* AdminCategoryListNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40059C6629C974CF00F5CB2D /* AdminCategoryListNavViewController.swift */; };
+		400C5B302A0C8F8F00527487 /* OrderNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400C5B2F2A0C8F8F00527487 /* OrderNavViewController.swift */; };
+		400C5B322A0C8FB600527487 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400C5B312A0C8FB600527487 /* OrderViewController.swift */; };
 		40131F3129C998B900C00A74 /* CustomerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40131F2F29C998B900C00A74 /* CustomerListTableViewCell.swift */; };
 		40131F3229C998B900C00A74 /* CustomerListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40131F3029C998B900C00A74 /* CustomerListTableViewCell.xib */; };
 		40131F3629C9A70000C00A74 /* CategoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40131F3429C9A70000C00A74 /* CategoryListTableViewCell.swift */; };
@@ -96,6 +98,8 @@
 		40059C6229C974B000F5CB2D /* AdminProductListNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductListNavViewController.swift; sourceTree = "<group>"; };
 		40059C6429C974BF00F5CB2D /* AdminCustomerListNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCustomerListNavViewController.swift; sourceTree = "<group>"; };
 		40059C6629C974CF00F5CB2D /* AdminCategoryListNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCategoryListNavViewController.swift; sourceTree = "<group>"; };
+		400C5B2F2A0C8F8F00527487 /* OrderNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNavViewController.swift; sourceTree = "<group>"; };
+		400C5B312A0C8FB600527487 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		40131F2F29C998B900C00A74 /* CustomerListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerListTableViewCell.swift; sourceTree = "<group>"; };
 		40131F3029C998B900C00A74 /* CustomerListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerListTableViewCell.xib; sourceTree = "<group>"; };
 		40131F3429C9A70000C00A74 /* CategoryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListTableViewCell.swift; sourceTree = "<group>"; };
@@ -277,6 +281,23 @@
 				40059C6629C974CF00F5CB2D /* AdminCategoryListNavViewController.swift */,
 			);
 			path = CategoryNavViewController;
+			sourceTree = "<group>";
+		};
+		400C5B2D2A0C8ED200527487 /* SendOrderScreen */ = {
+			isa = PBXGroup;
+			children = (
+				400C5B2E2A0C8EE500527487 /* SendOrderNavViewController */,
+				400C5B312A0C8FB600527487 /* OrderViewController.swift */,
+			);
+			path = SendOrderScreen;
+			sourceTree = "<group>";
+		};
+		400C5B2E2A0C8EE500527487 /* SendOrderNavViewController */ = {
+			isa = PBXGroup;
+			children = (
+				400C5B2F2A0C8F8F00527487 /* OrderNavViewController.swift */,
+			);
+			path = SendOrderNavViewController;
 			sourceTree = "<group>";
 		};
 		40131F2E29C9984A00C00A74 /* CustomerListTableViewCell */ = {
@@ -474,6 +495,7 @@
 		CE10D0A92948978800EC03EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				400C5B2D2A0C8ED200527487 /* SendOrderScreen */,
 				40A2BC6F2A003876003C8164 /* UserUpdatePage */,
 				40198D9229C6F35A00453B06 /* SuggestionDetail */,
 				40785D2129A4CD3200384B3B /* ProductDetails */,
@@ -837,6 +859,7 @@
 				40D07D0E29BF8EA9004BE33A /* CommentModel.swift in Sources */,
 				400453BF29C85FCD00A14231 /* AdminCommentViewController.swift in Sources */,
 				4022192329C7466B00A5079F /* LikedProductsCollectionViewCell.swift in Sources */,
+				400C5B302A0C8F8F00527487 /* OrderNavViewController.swift in Sources */,
 				CE0B9102298A8672001139CB /* ProductModel.swift in Sources */,
 				CEC9F890294A014000A938E7 /* WishListViewController.swift in Sources */,
 				40785D2429A4CD7C00384B3B /* ProductDetailsNavViewController.swift in Sources */,
@@ -854,6 +877,7 @@
 				CE89CC0E298B9A1500ADFDEA /* ProductCollectionViewCell.swift in Sources */,
 				400453BD29C85C7000A14231 /* AdminCommentNavViewController.swift in Sources */,
 				40059C6729C974CF00F5CB2D /* AdminCategoryListNavViewController.swift in Sources */,
+				400C5B322A0C8FB600527487 /* OrderViewController.swift in Sources */,
 				CE564BD0294AFB9C00B409B5 /* WishListNavController.swift in Sources */,
 				CED865862948811300097C12 /* SceneDelegate.swift in Sources */,
 				CEC9F88E294A012B00A938E7 /* UserProfileViewController.swift in Sources */,
