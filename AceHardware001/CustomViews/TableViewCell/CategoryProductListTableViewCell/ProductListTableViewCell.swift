@@ -21,7 +21,7 @@ class ProductListTableViewCell: UITableViewCell {
         productImageView.layer.cornerRadius = 15
         productNameLabel.text = product.productName
         productDetailLabel.text = product.description
-        productPriceLabel.text = "\(round(100 * product.price) / 100) som"
+        productPriceLabel.text = "\(round(100 * product.price) / 100) сом"
         productImageView.image = UIImage(named: product.productImageName)
     }
     

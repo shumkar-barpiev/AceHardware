@@ -57,13 +57,23 @@ class CartViewController: UIViewController {
     
     
     @IBAction func sendOrderButtonAction(_ sender: Any) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "OrderNavViewController") as! OrderNavViewController
-        let orderViewController = controller.topViewController as! OrderViewController
-        orderViewController.user = self.user
-        orderViewController.cartProducts = self.cartProducts
         
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false, completion: nil)
+        if(cartProducts.count > 0){
+            let controller = storyboard?.instantiateViewController(withIdentifier: "OrderNavViewController") as! OrderNavViewController
+            let orderViewController = controller.topViewController as! OrderViewController
+            orderViewController.user = self.user
+            orderViewController.cartProducts = self.cartProducts
+            orderViewController.userCart = self.userCart
+            
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: false, completion: nil)
+        }else{
+            let alerController = UIAlertController(title: "Товар табылган жок.", message: "Заказ кетирүүнү кааласаңыз жаккан товарыңызды корзинага салыңыз, андан соң заказ кетириңиз!", preferredStyle: .alert)
+            let alerAction = UIAlertAction(title: "Макул", style: .cancel) { _ in }
+            alerController.addAction(alerAction)
+            present(alerController, animated: true, completion: nil)
+        }
+        
     }
     
     //    MARK: fetching customer cart

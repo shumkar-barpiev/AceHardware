@@ -9,13 +9,18 @@ import UIKit
 
 class OrderViewController: UIViewController {
     var user = [User]()
+    var userCart = [Cart]()
     var cartProducts = [Product]()
     
+    
 
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(cartProducts)
+        
     }
     
 
@@ -27,6 +32,188 @@ class OrderViewController: UIViewController {
         present(controller, animated: false, completion: nil)
         
     }
+    
+    
+    
+    @IBAction func confirOrderAction(_ sender: Any) {
+        
+        if !(addressTextField.text?.isEmpty ?? true)!{
+            
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            
+            
+        
+            
+            let orderDate = dateFormatter.string(from: date)
+            let orderName = orderDate + " Order " + user[0].userName
+            var tempTotalSum = 0.0
+            
+            var orderDescription = "Заказ төмөнкү товарларды камтыйт: \n"
+            
+            
+            for product in cartProducts {
+                orderDescription = orderDescription + "\t" + product.productName+"\n"
+                tempTotalSum += product.price
+            }
+            
+            orderDescription += "\nТоварлардын жалпы саны: \(cartProducts.count)"
+            orderDescription += "\nЗаказдын кетирилген датасы: \(orderDate)"
+            orderDescription += "\nЖыйынтыктагы сумма: \(tempTotalSum) сом"
+            orderDescription += "\nТөлөм тиби: Накталай"
+            
+            
+            let totalSum = "\(tempTotalSum) сом"
+            let orderStatus = "Заказ кабыл алынды"
+            let phoneNumber = user[0].phoneNumber
+            let address = addressTextField.text!
+            let customerName = user[0].userName
+            let customerId = user[0].id
+            
+            
+            
+            print("---------------------------------\n")
+            print(orderName)
+            print(orderDate)
+            print(orderDescription)
+            print(customerId)
+            print(customerName)
+            print(address)
+            print(phoneNumber)
+            print(totalSum)
+            print(orderStatus)
+            
+            let didSendOrder = sendOrder(orderName, orderDate, orderDescription, customerId, customerName, address, phoneNumber, totalSum, orderStatus)
+            
+            
+            if didSendOrder{
+                
+                for cartProduct in cartProducts {
+                    self.deleteFromCart(self.userCart[0].id, cartProduct.id)
+                }
+                
+                let alertController = UIAlertController(title: "Куттуктайбыз, \(user[0].userName)!!!", message: "Сиздин заказыңыз ийгиликтүү кабыл алынды.", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Макул", style: .cancel) { _ in
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.user = self.user
+                    self.present(controller, animated: false, completion: nil)
+                }
+                alertController.addAction(alertAction)
+                present(alertController, animated: true, completion: nil)
+            } else{
+                let alertController = UIAlertController(title: "Катачылык кетти!!!", message: "Кайра аракет кылып көрүңүз.", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Макул", style: .cancel) { _ in
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabbarViewController") as! MainTabbarViewController
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.user = self.user
+                    self.present(controller, animated: false, completion: nil)
+                }
+                alertController.addAction(alertAction)
+                present(alertController, animated: true, completion: nil)
+            }
+        }else{
+            let alerController = UIAlertController(title: "Адрести талаасын толтуруңуз!!!", message: "", preferredStyle: .alert)
+            let alerAction = UIAlertAction(title: "Макул", style: .cancel) { _ in }
+            alerController.addAction(alerAction)
+            present(alerController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
+    
+   //    MARK: creating new user function
+       private func sendOrder(
+        _ orderName: String,
+        _ orderDate: String,
+        _ orderDescription: String,
+        _ customerId: Int,
+        _ customerName: String,
+        _ address: String,
+        _ phoneNumber: String,
+        _ totalSum: String,
+        _ orderStatus: String
+        ) -> Bool{
+           var sendOrderResponse = true
+           
+           guard let url = URL(string:"http://localhost/BackendAPIphp/api/ordersAPI.php" ) else{
+               return false
+           }
+           
+           var request = URLRequest(url: url)
+           
+           // method body, headers
+           request.httpMethod = "POST"
+           
+           request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+           let body: [String: AnyHashable] = [
+               "orderName": orderName,
+               "orderDate": orderDate,
+               "orderDescription": orderDescription,
+               "customerId": customerId,
+               "customerName": customerName,
+               "address": address,
+               "phoneNumber": phoneNumber,
+               "totalSum": totalSum,
+               "orderStatus": orderStatus
+           ]
+           request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+           
+           //make request
+           let task = URLSession.shared.dataTask(with: request) { data, response, error in
+               guard let data = data, error == nil else{
+                   return
+               }
+               // Convert HTTP Response Data to a String
+               if let dataString = String(data: data, encoding: .utf8) {
+                   print("Response data string:\n \(dataString)")
+               }else{
+                   sendOrderResponse = false
+               }
+           }
+           task.resume()
+           
+           return sendOrderResponse
+       }
+    
+    
+    //    MARK:  delete from cart
+    public func deleteFromCart(_ cartID: Int, _ productID: Int){
+        
+        guard let url = URL(string:"http://localhost/BackendAPIphp/api/customerCartAPI.php" ) else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        // method body, headers
+        request.httpMethod = "DELETE"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "cartId": cartID,
+            "productId": productID
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        //make request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else{
+                return
+            }
+            // Convert HTTP Response Data to a String
+            if let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }else{
+                print("something wrong")
+            }
+        }
+        
+        task.resume()
+    }
+    
     
 
 }
