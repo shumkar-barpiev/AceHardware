@@ -66,7 +66,7 @@ class ProductDetailsViewController: UIViewController {
         
         productImageView.image = UIImage(named: product[0].productImageName)
         productNameLabel.text = product[0].productName
-        priceLabel.text = "\(round(100 * product[0].price) / 100) som"
+        priceLabel.text = "\(round(100 * product[0].price) / 100) сом"
         productDescriptionLabel.text = product[0].description
         
     }

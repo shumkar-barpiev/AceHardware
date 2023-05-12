@@ -2289,6 +2289,33 @@
                     <view key="view" contentMode="scaleToFill" id="DWX-xa-w9U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter the order status" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7it-pY-sOq">
+                                <rect key="frame" x="27" y="160" width="367" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Заказдын статусу :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="uv0-CM-2Lf">
+                                <rect key="frame" x="27" y="116" width="151" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fS-r6-XSR">
+                                <rect key="frame" x="154" y="238" width="108" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Жаңыртуу">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.78985467659999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="updateOrderStatusAction:" destination="an0-ye-c6Q" eventType="touchUpInside" id="awg-9g-AaY"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="udW-gQ-yRa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -2300,6 +2327,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="orderStatusTextField" destination="7it-pY-sOq" id="c54-5E-WkK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kem-Ca-WZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
