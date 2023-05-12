@@ -113,4 +113,22 @@ extension CustomerOrdersViewController: UITableViewDataSource, UITableViewDelega
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "OrderDetailsNavigationViewController") as! OrderDetailsNavigationViewController
+        let orderDetailsViewController = controller.topViewController as! OrderDetailsViewController
+        
+        orderDetailsViewController.storyboardIdentifier = "CustomerOrdersNavigationViewController"
+        orderDetailsViewController.user = self.user
+        var tempArr = [Order]()
+        
+        tempArr.append(myOrders[indexPath.row])
+        orderDetailsViewController.order = tempArr
+        orderDetailsViewController.isAdmin = false
+        
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false, completion: nil)
+        
+    }
+    
+    
 }

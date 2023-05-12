@@ -40,26 +40,32 @@ class OrderViewController: UIViewController {
         if !(addressTextField.text?.isEmpty ?? true)!{
             
             let date = Date()
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "dd.MM.yyyy"
+            
+            
+            let currentDate = Date()
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy"
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+            let dateAndTime = dateFormatter.string(from: currentDate)
             
             
-        
-            
-            let orderDate = dateFormatter.string(from: date)
-            let orderName = orderDate + " Order " + user[0].userName
+            let orderDateForName = dateFormatter1.string(from: date)
+            let orderName = orderDateForName + " Order " + user[0].userName
             var tempTotalSum = 0.0
             
             var orderDescription = "Заказ төмөнкү товарларды камтыйт: \n"
             
+            var counter = 1
             
             for product in cartProducts {
-                orderDescription = orderDescription + "\t" + product.productName+"\n"
+                orderDescription = orderDescription + "\t\(counter)) " + product.productName+"\n"
                 tempTotalSum += product.price
+                counter += 1
             }
             
             orderDescription += "\nТоварлардын жалпы саны: \(cartProducts.count)"
-            orderDescription += "\nЗаказдын кетирилген датасы: \(orderDate)"
+            orderDescription += "\nЗаказдын кетирилген датасы: \(dateAndTime)"
             orderDescription += "\nЖыйынтыктагы сумма: \(tempTotalSum) сом"
             orderDescription += "\nТөлөм тиби: Накталай"
             
@@ -72,7 +78,7 @@ class OrderViewController: UIViewController {
             let customerId = user[0].id
             
             
-            let didSendOrder = sendOrder(orderName, orderDate, orderDescription, customerId, customerName, address, phoneNumber, totalSum, orderStatus)
+            let didSendOrder = sendOrder(orderName, dateAndTime, orderDescription, customerId, customerName, address, phoneNumber, totalSum, orderStatus)
             
             
             if didSendOrder{

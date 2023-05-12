@@ -95,7 +95,19 @@ extension AdminOrdersViewController: UITableViewDelegate, UITableViewDataSource{
         let alertController = UIAlertController(title: "Иш-аракеттер тизмеси.", message: "", preferredStyle: .alert)
 
         let alertOrderDetailAction = UIAlertAction(title: "Деталдуу карап чыгуу", style: .default) { _ in
-            print("detail of order")
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "OrderDetailsNavigationViewController") as! OrderDetailsNavigationViewController
+            let orderDetailsViewController = controller.topViewController as! OrderDetailsViewController
+            
+            orderDetailsViewController.storyboardIdentifier = "AdminOrderNavViewController"
+            
+            var tempArr = [Order]()
+            
+            tempArr.append(self.orders[indexPath.row])
+            orderDetailsViewController.order = tempArr
+            orderDetailsViewController.isAdmin = true
+            
+            controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: false, completion: nil)
         }
         let alertUpdateOrderStatus = UIAlertAction(title: "Заказдын статусун жаңыртуу", style: .default) { _ in
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "OrderStatusNavigationViewController") as! OrderStatusNavigationViewController
